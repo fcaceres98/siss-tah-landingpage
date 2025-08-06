@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 import Link from "next/link";
-import { foods, travelMenuItems } from "./config";
+import { arrAboutUs, arrDestinations } from "./config";
 import { Logo } from "./logo";
 
 export const NavigationSheet = () => {
@@ -17,16 +17,16 @@ export const NavigationSheet = () => {
         <Logo />
 
         <div className="mt-12 text-base space-y-4">
-          <Link href="#">Home</Link>
+          <Link href="#">Inicio</Link>
 
           <div>
-            <div className="font-bold">Food</div>
+            <div className="font-bold">Quienes Somos</div>
             <ul className="mt-2 space-y-3 ml-1 pl-4 border-l">
-              {foods.map((foodItem) => (
-                <li key={foodItem.title}>
+              {arrAboutUs.map((aboutUs) => (
+                <li key={aboutUs.title}>
                   <Link href="#" className="flex items-center gap-2">
-                    <foodItem.icon className="h-5 w-5 mr-2 text-muted-foreground" />
-                    {foodItem.title}
+                    <aboutUs.icon className="h-5 w-5 mr-2 text-muted-foreground" />
+                    {aboutUs.title}
                   </Link>
                 </li>
               ))}
@@ -34,18 +34,20 @@ export const NavigationSheet = () => {
           </div>
 
           <div>
-            <div className="font-bold">Travel</div>
+            <div className="font-bold">Destinos</div>
             <ul className="mt-2 space-y-3 ml-1 pl-4 border-l">
-              {travelMenuItems.map((item) => (
-                <li key={item.title}>
+              {arrDestinations.map((destinations) => (
+                <li key={destinations.title}>
                   <Link href="#" className="flex items-center gap-2">
-                    <item.icon className="h-5 w-5 mr-2 text-muted-foreground" />
-                    {item.title}
+                    <destinations.icon className="h-5 w-5 mr-2 text-muted-foreground" />
+                    {destinations.title}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
+
+          <Link href="#">Contactenos</Link>
         </div>
       </SheetContent>
     </Sheet>

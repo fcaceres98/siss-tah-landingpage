@@ -20,7 +20,7 @@ const Navbar03Page = () => {
 
           <div className="flex items-center gap-3">
             <Button>
-              Get Started <ArrowUpRight />
+              Reservar Ahora <ArrowUpRight />
             </Button>
             <ModeToggle />
 

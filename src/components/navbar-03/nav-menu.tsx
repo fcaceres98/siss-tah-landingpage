@@ -14,30 +14,30 @@ import { NavigationMenuProps } from "@radix-ui/react-navigation-menu";
 import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import React from "react";
-import { foods, travelMenuItems } from "./config";
+import { arrAboutUs, arrDestinations } from "./config";
 
 export const NavMenu = (props: NavigationMenuProps) => (
   <NavigationMenu {...props}>
     <NavigationMenuList className="gap-0 space-x-0 text-sm">
       <NavigationMenuItem>
         <Button variant="ghost" className="text-[15px] font-normal" asChild>
-          <Link href="#">Home</Link>
+          <Link href="#">Inicio</Link>
         </Button>
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuTrigger className="text-[15px] font-normal">
-          Food
+          Quienes Somos
         </NavigationMenuTrigger>
         <NavigationMenuContent>
           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-            {foods.map((food) => (
+            {arrAboutUs.map((aboutUs) => (
               <ListItem
-                key={food.title}
-                title={food.title}
-                icon={food.icon}
+                key={aboutUs.title}
+                title={aboutUs.title}
+                icon={aboutUs.icon}
                 href="#"
               >
-                {food.description}
+                {aboutUs.description}
               </ListItem>
             ))}
           </ul>
@@ -45,22 +45,27 @@ export const NavMenu = (props: NavigationMenuProps) => (
       </NavigationMenuItem>
       <NavigationMenuItem>
         <NavigationMenuTrigger className="text-[15px] font-normal">
-          Travel
+          Destinos
         </NavigationMenuTrigger>
         <NavigationMenuContent>
           <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-            {travelMenuItems.map((menuItem) => (
+            {arrDestinations.map((destinations) => (
               <ListItem
-                key={menuItem.title}
-                title={menuItem.title}
-                icon={menuItem.icon}
+                key={destinations.title}
+                title={destinations.title}
+                icon={destinations.icon}
                 href="#"
               >
-                {menuItem.description}
+                {destinations.description}
               </ListItem>
             ))}
           </ul>
         </NavigationMenuContent>
+      </NavigationMenuItem>
+      <NavigationMenuItem>
+        <Button variant="ghost" className="text-[15px] font-normal" asChild>
+          <Link href="#">Contactenos</Link>
+        </Button>
       </NavigationMenuItem>
     </NavigationMenuList>
   </NavigationMenu>
