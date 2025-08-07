@@ -21,7 +21,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
     <NavigationMenuList className="gap-0 space-x-0 text-sm">
       <NavigationMenuItem>
         <Button variant="ghost" className="text-[15px] font-normal" asChild>
-          <Link href="#">Inicio</Link>
+          <Link href="/">Inicio</Link>
         </Button>
       </NavigationMenuItem>
       <NavigationMenuItem>
@@ -35,7 +35,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
                 key={aboutUs.title}
                 title={aboutUs.title}
                 icon={aboutUs.icon}
-                href="#"
+                href={aboutUs.href}
               >
                 {aboutUs.description}
               </ListItem>
