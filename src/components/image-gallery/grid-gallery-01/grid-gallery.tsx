@@ -18,7 +18,7 @@ export default function GridGallery() {
   const enableFiltering = true;
 
   // Static images array
-  const images: GalleryImage[] = [
+  const images: GalleryImage[]  = React.useMemo( () => [
     {
       src: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1470&auto=format&fit=crop",
       alt: "New York City skyline with Empire State Building",
@@ -75,7 +75,9 @@ export default function GridGallery() {
       height: 982,
       categories: ["Cities", "Landmarks"],
     },
-  ];
+  ],
+    []
+  );
 
   const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
 
