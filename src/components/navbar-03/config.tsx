@@ -18,7 +18,7 @@ export const arrAboutUs = [
     title: "Galeria",
     icon: Images,
     description: "Nuestra galeria de Imagenes.",
-    href: "#",
+    href: "/image-gallery",
   },
   {
     title: "Terminos y Condiciones",
