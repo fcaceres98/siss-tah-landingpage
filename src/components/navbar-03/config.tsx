@@ -12,7 +12,7 @@ export const arrAboutUs = [
     title: "Itinerario",
     icon: PlaneTakeoff,
     description: "Lista de nuestro itinerario de Vuelos.",
-    href: "#",
+    href: "/itinerary",
   },
   {
     title: "Galeria",
@@ -36,7 +36,7 @@ export const arrAboutUs = [
     title: "Preguntas Frecuentes",
     icon: MessageCircleQuestionMark,
     description: "Revisa la lista de preguntas frecuentes.",
-    href: "#",
+    href: "/faq",
   }
 ];
 
