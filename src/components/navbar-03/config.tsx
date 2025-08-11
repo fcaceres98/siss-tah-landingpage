@@ -30,7 +30,7 @@ export const arrAboutUs = [
     title: "Mercancias Peligrosas",
     icon: TriangleAlert,
     description: "Te mostramos los productos y objetos considerados Peligrosas por el AHAC.",
-    href: "#",
+    href: "/dangerous-goods",
   },
   {
     title: "Preguntas Frecuentes",
