@@ -1,20 +1,31 @@
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+// import { Button } from "@/components/ui/button";
+// import { ArrowRight } from "lucide-react";
+// import Link from "next/link";
 
 const features = [
   {
     category: "Marketing y Ventas",
     title: "Reserva y organiza tu viaje fácilmente",
     details: "Controla cada paso de tu compra y recibe confirmaciones inmediatas. Nuestra plataforma te ayuda a encontrar las mejores opciones para tus vuelos y gestionar tu itinerario sin complicaciones.",
-    textBottom: "Conoce Más",
+    textBottom: "Leer Más",
     tutorialLink: "#",
-  },
-  {
-    category: "Gestión de Proyectos",
-    title: "Viaja seguro con atención personalizada",
-    details: "Nuestro equipo está listo para asistirte antes, durante y después de tu viaje. Resolvemos tus dudas, te ayudamos con cambios y te damos soporte para que tu vuelo sea perfecto.",
-    textBottom: "Contactanos",
+  }, {
+    category: "Seguridad y Confiabilidad",
+    title: "Tu seguridad, nuestra prioridad",
+    details: "En TAH operamos con los más altos estándares internacionales de seguridad aérea. Nuestro compromiso es garantizar vuelos confiables, con tripulaciones altamente capacitadas y aviones certificados para tu tranquilidad.",
+    textBottom: "Leer Más",
+    tutorialLink: "#",
+  }, {
+    category: "Experiencia a Bordo",
+    title: "Comodidad y atención en cada vuelo",
+    details: "Queremos que disfrutes tu viaje desde el momento en que abordas. Ofrecemos un servicio personalizado, trato cálido y una experiencia diseñada para hacer de tu vuelo un momento agradable y placentero.",
+    textBottom: "Leer Más",
+    tutorialLink: "#",
+  }, {
+    category: "Conectividad y Destinos",
+    title: "Conectando Honduras con la región",
+    details: "Descubre la facilidad de viajar con TAH, una aerolínea que une ciudades, culturas y oportunidades en Honduras y Centroamérica. Llevamos a nuestros pasajeros más cerca de lo que importa.",
+    textBottom: "Leer Más",
     tutorialLink: "#",
   },
 ];
@@ -43,14 +54,14 @@ const Features06Page = () => {
                 <p className="text-muted-foreground text-[17px]">
                   {feature.details}
                 </p>
-                <Button
+                {/* <Button
                   asChild
                   className="mt-6 rounded-full min-w-40 text-[15px]"
                 >
                   <Link href={feature.tutorialLink}>
                     {feature.textBottom} <ArrowRight />
                   </Link>
-                </Button>
+                </Button> */}
               </div>
             </div>
           ))}
