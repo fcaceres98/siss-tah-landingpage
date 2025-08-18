@@ -4,38 +4,17 @@ import Link from "next/link";
 
 const features = [
   {
-    category: "Marketing and Sales",
-    title: "Collect and enrich leads your way",
-    details:
-      "Take control over how and when to follow up with your leads. Store and reference leads in multiple tables and, from there, automatically send them personalized emails.",
+    category: "Marketing y Ventas",
+    title: "Reserva y organiza tu viaje fácilmente",
+    details: "Controla cada paso de tu compra y recibe confirmaciones inmediatas. Nuestra plataforma te ayuda a encontrar las mejores opciones para tus vuelos y gestionar tu itinerario sin complicaciones.",
+    textBottom: "Conoce Más",
     tutorialLink: "#",
   },
   {
-    category: "Project Management",
-    title: "Streamline your workflows effortlessly",
-    details:
-      "Organize tasks, deadlines, and team collaboration in one place. Use customizable boards to manage projects efficiently and automate routine updates.",
-    tutorialLink: "#",
-  },
-  {
-    category: "Customer Support",
-    title: "Deliver seamless customer experiences",
-    details:
-      "Track and resolve customer queries faster with an integrated ticketing system. Set priorities, automate follow-ups, and enhance satisfaction with personalized responses.",
-    tutorialLink: "#",
-  },
-  {
-    category: "Team Collaboration",
-    title: "Stay connected with your team",
-    details:
-      "Simplify communication and align team efforts with shared boards and real-time updates. Enable transparent goal tracking and instant feedback for better results.",
-    tutorialLink: "#",
-  },
-  {
-    category: "Product Development",
-    title: "Accelerate innovation with ease",
-    details:
-      "Bring your product ideas to life by managing prototypes, feedback, and iterations in one place. Collaborate with your team to refine features and release with confidence.",
+    category: "Gestión de Proyectos",
+    title: "Viaja seguro con atención personalizada",
+    details: "Nuestro equipo está listo para asistirte antes, durante y después de tu viaje. Resolvemos tus dudas, te ayudamos con cambios y te damos soporte para que tu vuelo sea perfecto.",
+    textBottom: "Contactanos",
     tutorialLink: "#",
   },
 ];
@@ -45,7 +24,7 @@ const Features06Page = () => {
     <div className="min-h-screen flex items-center justify-center">
       <div className="max-w-screen-lg w-full py-10 px-6">
         <h2 className="text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight max-w-xl md:text-center md:mx-auto">
-          Boost Your Strategy with Smart Features
+          Organiza y Viaja Mejor, soluciones Inteligentes para tu viaje
         </h2>
         <div className="mt-8 md:mt-16 w-full mx-auto space-y-20">
           {features.map((feature) => (
@@ -69,7 +48,7 @@ const Features06Page = () => {
                   className="mt-6 rounded-full min-w-40 text-[15px]"
                 >
                   <Link href={feature.tutorialLink}>
-                    Learn More <ArrowRight />
+                    {feature.textBottom} <ArrowRight />
                   </Link>
                 </Button>
               </div>

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Accordion,
   AccordionContent,
@@ -7,7 +8,6 @@ import {
 import {
   BookCheck,
   ChartPie,
-  FolderSync,
   Goal,
   Users,
   Zap,
@@ -16,39 +16,33 @@ import {
 const features = [
   {
     icon: Goal,
-    title: "Identify Opportunities",
+    title: "Rutas directas y seguras",
     description:
-      "Easily uncover untapped areas to explore and expand your reach effortlessly and effectively.",
+      "Volamos desde Comayagua hacia los destinos más populares de México.",
   },
   {
     icon: BookCheck,
-    title: "Build Authority",
+    title: "Precios competitivos",
     description:
-      "Create valuable content that resonates, inspires trust, and positions you as an expert.",
+      "Ofrecemos tarifas exclusivas y promociones especiales para que viajes al mejor precio.",
   },
   {
     icon: ChartPie,
-    title: "Instant Insights",
+    title: "Compra rápida y sencilla",
     description:
-      "Gain immediate, actionable insights with a quick glance, enabling fast decision-making.",
+      "Con nuestra plataforma online, reserva tu boleto en minutos, sin complicaciones.",
   },
   {
     icon: Users,
-    title: "Engage with Your Audience",
+    title: "Atención personalizada",
     description:
-      "Boost audience engagement with interactive features like polls, quizzes, and forms.",
-  },
-  {
-    icon: FolderSync,
-    title: "Automate Your Workflow",
-    description:
-      "Streamline your processes by automating repetitive tasks, saving time and reducing effort.",
+      "Nuestro equipo está disponible para ayudarte antes, durante y después de tu viaje.",
   },
   {
     icon: Zap,
-    title: "Accelerate Growth",
+    title: "Pago seguro",
     description:
-      "Supercharge your growth by implementing strategies that drive results quickly and efficiently.",
+      "Todos los métodos de pago cuentan con la máxima seguridad para proteger tus datos.",
   },
 ];
 
@@ -57,7 +51,7 @@ const Features04Page = () => {
     <div className="min-h-screen flex items-center justify-center bg-accent">
       <div className="max-w-screen-lg w-full py-12 px-6">
         <h2 className="text-4xl md:text-5xl md:leading-[3.5rem] font-bold tracking-tight max-w-lg">
-          Boost Your Strategy with Smart Features
+          Descubre nuestras ventajas para tu viaje
         </h2>
         <div className="mt-6 md:mt-8 w-full mx-auto grid md:grid-cols-2 gap-12">
           <div>
