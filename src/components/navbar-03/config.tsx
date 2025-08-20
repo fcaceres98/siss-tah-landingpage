@@ -45,10 +45,12 @@ export const arrDestinations = [
     title: "Honduras",
     icon: MapPin,
     description: "Rica en cultura, naturaleza exuberante y gente cálida.",
+    href: "/destinos/honduras",
   },
   {
     title: "Mexico",
     icon: MapPin,
     description: "Historia milenaria, sabores intensos y tradiciones profundamente vivas.",
+    href: "/destinos/mexico",
   },
 ];

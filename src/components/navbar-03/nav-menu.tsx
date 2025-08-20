@@ -54,7 +54,7 @@ export const NavMenu = (props: NavigationMenuProps) => (
                 key={destinations.title}
                 title={destinations.title}
                 icon={destinations.icon}
-                href="#"
+                href={destinations.href}
               >
                 {destinations.description}
               </ListItem>
