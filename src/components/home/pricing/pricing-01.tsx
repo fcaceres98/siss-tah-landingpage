@@ -4,56 +4,28 @@ import { CircleCheck } from "lucide-react";
 
 const plans = [
   {
-    name: "Starter",
-    price: 19,
-    description:
-      "Get 20 AI-generated portraits with 2 unique styles and filters.",
-    features: [
-      "5 hours turnaround time",
-      "20 AI portraits",
-      "Choice of 2 styles",
-      "Choice of 2 filters",
-      "2 retouch credits",
-    ],
-    buttonText: "Get 20 portraits in 5 hours",
-  },
-  {
-    name: "Advanced",
-    price: 29,
+    name: "HN Palmerola - MX Felipe Angeles",
+    price: 480,
     isRecommended: true,
     description:
-      "Get 50 AI-generated portraits with 5 unique styles and filters.",
+      "Vuelo ida y vuelta saliendo de HN Palmerola.",
     features: [
-      "3 hours turnaround time",
-      "50 AI portraits",
-      "Choice of 5 styles",
-      "Choice of 5 filters",
-      "5 retouch credits",
+      "3 horas de vuelo",
+      "1 equipaje de mano 10LB",
+      "1 equipaje gratis en carga",
+      "Salida desde palmerola 9:00 AM",
+      "Salida desde Felipe Angeles 12:40 PM",
     ],
-    buttonText: "Get 50 portraits in 3 hours",
+    buttonText: "Reservar Ahora",
     isPopular: true,
-  },
-  {
-    name: "Premium",
-    price: 49,
-    description:
-      "Get 100 AI-generated portraits with 10 unique styles and filters.",
-    features: [
-      "1-hour turnaround time",
-      "100 AI portraits",
-      "Choice of 10 styles",
-      "Choice of 10 filters",
-      "10 retouch credits",
-    ],
-    buttonText: "Get 100 portraits in 1 hour",
   },
 ];
 
 const Pricing01 = () => {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center py-12 px-6 bg-accent">
-      <h1 className="text-5xl font-bold text-center tracking-tight">Pricing</h1>
-      <div className="mt-12 max-w-screen-lg mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <h1 className="text-5xl font-bold text-center tracking-tight">Precios</h1>
+      <div className="mt-12 max-w-screen-lg mx-auto grid grid-cols-1  lg:grid-cols-1 gap-8">
         {plans.map((plan) => (
           <div key={plan.name} className="border rounded-lg p-6 bg-background">
             <h3 className="text-lg font-medium">{plan.name}</h3>
