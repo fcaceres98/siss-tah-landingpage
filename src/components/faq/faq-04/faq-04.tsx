@@ -14,7 +14,7 @@ const faq = [
     icon: CreditCard,
     question: "¿Qué es Placetopay?",
     answer:
-      "Placetopay es la plataforma de pagos electrónicos que usa AEROLINEA LANHSA para procesar en línea las transacciones generadas en la tienda virtual con las formas de pago habilitadas para tal fin.",
+      "Placetopay es la plataforma de pagos electrónicos que usa TAH para procesar en línea las transacciones generadas en la tienda virtual con las formas de pago habilitadas para tal fin.",
   },
   {
     icon: Route,
@@ -55,12 +55,12 @@ const faq = [
     icon: ShieldCheck,
     question: "¿Qué debo hacer si mi transacción no concluyó?",
     answer:
-      "En primera instancia, revisar si llegó un email de confirmación de la transacción a la cuenta de correo electrónico inscrita en el momento de realizar el pago, en caso de no haberlo recibido, deberás contactar a SERVICIOALCLIENTE@LANHSAHN.COM para confirmar el estado de la transacción.",
+      "En primera instancia, revisar si llegó un email de confirmación de la transacción a la cuenta de correo electrónico inscrita en el momento de realizar el pago, en caso de no haberlo recibido, deberás contactar a SERVICIOALCLIENTE@TAHONDURAS.ONLINE para confirmar el estado de la transacción.",
   },{
     icon: ShieldCheck,
     question: "¿Qué debo hacer si no recibí el comprobante de pago?",
     answer:
-      "Por cada transacción aprobada a través de Placetopay, recibirás un comprobante del pago con la referencia de compra en la dirección de correo electrónico que indicaste al momento de pagar. Si no lo recibes, podrás contactar a SERVICIOALCLIENTE@LANHSAHN.COM o a la línea +504 9441-1522, para solicitar el reenvío del comprobante a la misma dirección de correo electrónico registrada al momento de pagar.",
+      "Por cada transacción aprobada a través de Placetopay, recibirás un comprobante del pago con la referencia de compra en la dirección de correo electrónico que indicaste al momento de pagar. Si no lo recibes, podrás contactar a SERVICIOALCLIENTE@TAHONDURAS.ONLINE o a la línea +504 9441-1522, para solicitar el reenvío del comprobante a la misma dirección de correo electrónico registrada al momento de pagar.",
   },
 ];
 
