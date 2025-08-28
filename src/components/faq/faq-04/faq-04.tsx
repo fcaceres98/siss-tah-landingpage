@@ -12,27 +12,27 @@ import {
 const faq = [
   {
     icon: CreditCard,
-    question: "¿Qué es Placetopay?",
+    question: "¿Qué es Evertec Placetopay?",
     answer:
-      "Placetopay es la plataforma de pagos electrónicos que usa TAH para procesar en línea las transacciones generadas en la tienda virtual con las formas de pago habilitadas para tal fin.",
+      "Evertec Placetopay es la plataforma de pagos electrónicos que usa TAH para procesar en línea las transacciones generadas en la tienda virtual con las formas de pago habilitadas para tal fin.",
   },
   {
     icon: Route,
     question: "¿Cómo puedo pagar?",
     answer:
-      "En la tienda virtual de TAH usted podrá realizar su pago con los medios habilitados para tal fin. Usted, de acuerdo a las opciones de pago escogidas por el comercio, podrá pagar a través de tarjetas de crédito Visa y MasterCard.",
+      "En la tienda virtual de TAH usted podrá realizar su pago con los medios habilitados para tal fin. Usted, de acuerdo con las opciones de pago escogidas por el comercio, podrá pagar a través de tarjetas de crédito Visa y MasterCard.",
   },
   {
     icon: BookOpen,
     question: "¿Es seguro ingresar mis datos bancarios en este sitio web?",
     answer:
-      "Para proteger tus datos TAH delega en Placetopay la captura de la información sensible. Nuestra plataforma de pagos cumple con los más altos estándares exigidos por la norma internacional PCI DSS de seguridad en transacciones con tarjeta de crédito. Además tiene certificado de seguridad SSL expedido por GeoTrust una compañía Verisign, el cual garantiza comunicaciones seguras mediante la encriptación de todos los datos hacia y desde el sitio; de esta manera te podrás sentir seguro a la hora de ingresar la información de su tarjeta.",
+      "Para proteger tus datos TAH delega en Evertec Placetopay la captura de la información sensible. Nuestra plataforma de pagos cumple con los más altos estándares exigidos por la norma internacional PCI DSS de seguridad en transacciones con tarjeta de crédito. Además tiene certificado de seguridad SSL expedido por GeoTrust una compañía Verisign, el cual garantiza comunicaciones seguras mediante la encriptación de todos los datos hacia y desde el sitio; de esta manera te podrás sentir seguro a la hora de ingresar la información de su tarjeta.",
   },
   {
     icon: PanelsTopLeft,
     question: "¿Es segura la pagina web de Place to Pay?",
     answer:
-      "Durante el proceso de pago, en el navegador se muestra el nombre de la organización autenticada, la autoridad que lo certifica y la barra de dirección cambia a color verde. Estas características son visibles de inmediato y dan garantía y confianza para completar la transacción en Placetopay. Placetopay también cuenta con el monitoreo constante de McAfee Secure y la firma de mensajes electrónicos con Certicámara.",
+      "Durante el proceso de pago, en el navegador se muestra el nombre de la organización autenticada, la autoridad que lo certifica y la barra de dirección cambia a color verde. Estas características son visibles de inmediato y dan garantía y confianza para completar la transacción en Evertec Placetopay. Evertec Placetopay también cuenta con el monitoreo constante de McAfee Secure y la firma de mensajes electrónicos con Certicámara.",
   },
   {
     icon: UserRoundCheck,
@@ -50,7 +50,7 @@ const faq = [
     icon: BadgeDollarSign,
     question: "¿Pagar electrónicamente tiene algún valor para mí como comprador?",
     answer:
-      "No, los pagos electrónicos realizados a través de Placetopay no generan costos adicionales para el comprador.",
+      "No, los pagos electrónicos realizados a través de Evertec Placetopay no generan costos adicionales para el comprador.",
   },{
     icon: ShieldCheck,
     question: "¿Qué debo hacer si mi transacción no concluyó?",
@@ -60,7 +60,7 @@ const faq = [
     icon: ShieldCheck,
     question: "¿Qué debo hacer si no recibí el comprobante de pago?",
     answer:
-      "Por cada transacción aprobada a través de Placetopay, recibirás un comprobante del pago con la referencia de compra en la dirección de correo electrónico que indicaste al momento de pagar. Si no lo recibes, podrás contactar a SERVICIOALCLIENTE@TAHONDURAS.ONLINE o a la línea +504 9441-1522, para solicitar el reenvío del comprobante a la misma dirección de correo electrónico registrada al momento de pagar.",
+      "Por cada transacción aprobada a través de Evertec Placetopay, recibirás un comprobante del pago con la referencia de compra en la dirección de correo electrónico que indicaste al momento de pagar. Si no lo recibes, podrás contactar a SERVICIOALCLIENTE@TAHONDURAS.ONLINE o a la línea +504 2262-0112, para solicitar el reenvío del comprobante a la misma dirección de correo electrónico registrada al momento de pagar.",
   },
 ];
 
