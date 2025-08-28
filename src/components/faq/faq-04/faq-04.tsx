@@ -15,48 +15,42 @@ const faq = [
     question: "¿Qué es Evertec Placetopay?",
     answer:
       "Evertec Placetopay es la plataforma de pagos electrónicos que usa TAH para procesar en línea las transacciones generadas en la tienda virtual con las formas de pago habilitadas para tal fin.",
-  },
-  {
+  }, {
     icon: Route,
     question: "¿Cómo puedo pagar?",
     answer:
       "En la tienda virtual de TAH usted podrá realizar su pago con los medios habilitados para tal fin. Usted, de acuerdo con las opciones de pago escogidas por el comercio, podrá pagar a través de tarjetas de crédito Visa y MasterCard.",
-  },
-  {
+  }, {
     icon: BookOpen,
     question: "¿Es seguro ingresar mis datos bancarios en este sitio web?",
     answer:
       "Para proteger tus datos TAH delega en Evertec Placetopay la captura de la información sensible. Nuestra plataforma de pagos cumple con los más altos estándares exigidos por la norma internacional PCI DSS de seguridad en transacciones con tarjeta de crédito. Además tiene certificado de seguridad SSL expedido por GeoTrust una compañía Verisign, el cual garantiza comunicaciones seguras mediante la encriptación de todos los datos hacia y desde el sitio; de esta manera te podrás sentir seguro a la hora de ingresar la información de su tarjeta.",
-  },
-  {
+  }, {
     icon: PanelsTopLeft,
     question: "¿Es segura la pagina web de Place to Pay?",
     answer:
       "Durante el proceso de pago, en el navegador se muestra el nombre de la organización autenticada, la autoridad que lo certifica y la barra de dirección cambia a color verde. Estas características son visibles de inmediato y dan garantía y confianza para completar la transacción en Evertec Placetopay. Evertec Placetopay también cuenta con el monitoreo constante de McAfee Secure y la firma de mensajes electrónicos con Certicámara.",
-  },
-  {
+  }, {
     icon: UserRoundCheck,
     question: "¿Puedo realizar el pago cualquier día y a cualquier hora?",
     answer:
       "Sí, en TAH podrás realizar tus compras en línea los 7 días de la semana, las 24 horas del día a sólo un clic de distancia.",
-  },
-  {
+  }, {
     icon: ShieldCheck,
     question: "¿Puedo cambiar la forma de pago?",
     answer:
       "Si aún no has finalizado tu pago, podrás volver al paso inicial y elegir la forma de pago que prefieras. Una vez finalizada la compra no es posible cambiar la forma de pago.",
-  },
-  {
+  }, {
     icon: BadgeDollarSign,
     question: "¿Pagar electrónicamente tiene algún valor para mí como comprador?",
     answer:
       "No, los pagos electrónicos realizados a través de Evertec Placetopay no generan costos adicionales para el comprador.",
-  },{
+  }, {
     icon: ShieldCheck,
     question: "¿Qué debo hacer si mi transacción no concluyó?",
     answer:
       "En primera instancia, revisar si llegó un email de confirmación de la transacción a la cuenta de correo electrónico inscrita en el momento de realizar el pago, en caso de no haberlo recibido, deberás contactar a SERVICIOALCLIENTE@TAHONDURAS.ONLINE para confirmar el estado de la transacción.",
-  },{
+  }, {
     icon: ShieldCheck,
     question: "¿Qué debo hacer si no recibí el comprobante de pago?",
     answer:
