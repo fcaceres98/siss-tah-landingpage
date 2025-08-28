@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, UserRound } from "lucide-react";
+import Image from "next/image";
 import React from "react";
 
 const Hero04 = () => {
@@ -26,7 +27,15 @@ const Hero04 = () => {
             </Button>
           </div>
         </div>
-        <div className="w-full aspect-video lg:aspect-auto lg:w-[1000px] lg:h-[calc(100vh-4rem)] bg-accent rounded-xl" />
+        <div className="w-full aspect-video lg:aspect-auto lg:w-[1000px] lg:h-[calc(100vh-4rem)] bg-accent rounded-xl">
+          <Image
+            src="/images/home/hero-04/hero-04-1.jpg"
+            alt="Hero Image"
+            width={960}
+            height={1280}
+            className="w-full h-full object-cover rounded-xl"
+          />
+        </div>
       </div>
     </div>
   );
