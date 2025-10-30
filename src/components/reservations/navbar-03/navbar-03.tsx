@@ -1,9 +1,6 @@
-import { Button } from "@/components/ui/button";
 import { Logo } from "./logo";
 import { NavMenu } from "./nav-menu";
-import Link from "next/link";
 import { NavigationSheet } from "./navigation-sheet";
-import { ArrowUpRight } from "lucide-react";
 
 import { ModeToggle } from "@/components/theme-provider/toggle"
 
@@ -20,11 +17,6 @@ const Navbar03Page = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <Button>
-              <Link href="/reservations" className="flex items-center gap-1">
-              Reservar Ahora <ArrowUpRight />
-              </Link>
-            </Button>
             <ModeToggle />
 
             {/* Mobile Menu */}

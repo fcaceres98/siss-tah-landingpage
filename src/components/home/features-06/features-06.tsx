@@ -10,7 +10,7 @@ const features = [
     details: "Controla cada paso de tu compra y recibe confirmaciones inmediatas. Nuestra plataforma te ayuda a encontrar las mejores opciones para tus vuelos y gestionar tu itinerario sin complicaciones.",
     textBottom: "Leer Más",
     tutorialLink: "#",
-    image: "/images/home/features-06/features-06-2.jpg",
+    image: "/images/home/features-06/features-06-1.jpg",
     imageWidth: 900,
     imageHeight: 1200,
   }, {
@@ -28,7 +28,7 @@ const features = [
     details: "Queremos que disfrutes tu viaje desde el momento en que abordas. Ofrecemos un servicio personalizado, trato cálido y una experiencia diseñada para hacer de tu vuelo un momento agradable y placentero.",
     textBottom: "Leer Más",
     tutorialLink: "#",
-    image: "/images/home/features-06/features-06-2.jpg",
+    image: "/images/home/features-06/features-06-3.jpg",
     imageWidth: 900,
     imageHeight: 1200,
   }, {

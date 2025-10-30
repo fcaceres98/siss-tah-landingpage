@@ -12,6 +12,7 @@ import {
   Users,
   Zap,
 } from "lucide-react";
+import Image from "next/image";
 
 const features = [
   {
@@ -78,7 +79,14 @@ const Features04Page = () => {
           </div>
 
           {/* Media */}
-          <div className="hidden md:block w-full h-full rounded-xl bg-background" />
+          <div className="hidden md:block w-full h-full rounded-xl bg-background">
+            <Image
+              alt={""}
+              src={"/images/home/features-04/features-04.jpg"}
+              width={736}
+              height={1104}
+              className="w-full h-full object-cover rounded-xl" />
+          </div>
         </div>
       </div>
     </div>
