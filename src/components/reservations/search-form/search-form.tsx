@@ -1,6 +1,6 @@
 "use client";
 
-import * as React from "react"
+import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ArrowRightLeft, ChevronsUpDown, Minus, Plus, CalendarIcon  } from "lucide-react";
 import {
@@ -38,16 +38,11 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
+import { Destination } from "@/components/types/destination";
+
 interface SearchFormPageProps {
   onSearch?: (data: z.infer<typeof FormSchema>) => void;
 }
-
-const arrFlightDestinations = [
-  { id: 1, country: "HONDURAS", destination: "SAN PEDRO SULA, HONDURAS", iata: "SAP", icao: "MHSAP", status: "SI", created_at: "2023-05-25 07:56:59", updated_at: "2023-05-25 07:56:59" },
-  { id: 2, country: "HONDURAS", destination: "TEGUCIGALPA , HONDURAS", iata: "TGU", icao: "MHTGU", status: "SI", created_at: "2023-05-25 07:56:59", updated_at: "2023-05-25 07:56:59" },
-  { id: 3, country: "MEXICO", destination: "FELIPE ÁNGELES, MEXICO", iata: "NLU", icao: "MMSM", status: "SI", created_at: "2023-05-25 07:56:59", updated_at: "2023-05-25 07:56:59" },
-  { id: 4, country: "HONDURAS", destination: "ROATAN, HONDURAS", iata: "RTB", icao: "MHRO", status: "SI", created_at: "2023-05-25 07:56:59", updated_at: "2023-05-25 07:56:59" },
-] as const
 
 export const FormSchema = z.object({
     from: z.string().nonempty("Por favor seleccione un destino."),
@@ -73,10 +68,32 @@ export const FormSchema = z.object({
 });
 
 const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
+
+    // Inside SearchFormPage:
+    const [destinations, setDestinations] = useState<Destination[]>([]);
+    const [loadingDestinations, setLoadingDestinations] = useState(true);
+
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    useEffect(() => {
+        const fetchDestinations = async () => {
+        try {
+            const res = await fetch(`${apiUrl}/tahonduras-online/destinations`); // your backend endpoint
+            if (!res.ok) throw new Error("Error fetching destinations");
+            const data: Destination[] = await res.json();
+            setDestinations(data);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoadingDestinations(false);
+        }
+        };
+
+        fetchDestinations();
+    }, [apiUrl]);
     
     const [calendarOpen, setCalendarOpen] = React.useState(false);
     const [paxCountOpen, setPaxCountOpen] = React.useState(false);
-
+    
     const [cantPax, setValuePax] = React.useState(0);
     
     const handlePlus = (type: string) => {
@@ -149,6 +166,7 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
             onSearch(data);
         }
     };
+    
   return (
     <div className="sticky z-50">
         <Form {...form}>
@@ -165,14 +183,14 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
                                 render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Desde</FormLabel>
-                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loadingDestinations}>
                                         <FormControl>
                                             <SelectTrigger className="w-full">
-                                                <SelectValue placeholder="Selecciona un destino" />
+                                                <SelectValue placeholder={loadingDestinations ? "Cargando destinos..." : "Selecciona un destino"} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent className="w-full">
-                                            {arrFlightDestinations.map((destination) => (
+                                            {destinations.map((destination) => (
                                                 <SelectItem key={destination.id} value={destination.id + ''}>
                                                     {destination.destination}
                                                 </SelectItem>
@@ -197,14 +215,14 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
                                 render={({ field }) => (
                                 <FormItem>
                                     <FormLabel>Hasta</FormLabel>
-                                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loadingDestinations}>
                                         <FormControl>
                                             <SelectTrigger className="w-full">
-                                                <SelectValue placeholder="Selecciona un destino" />
+                                                <SelectValue placeholder={loadingDestinations ? "Cargando destinos..." : "Selecciona un destino"} />
                                             </SelectTrigger>
                                         </FormControl>
                                         <SelectContent className="w-full">
-                                            {arrFlightDestinations.map((destination) => (
+                                            {destinations.map((destination) => (
                                                 <SelectItem key={destination.id} value={destination.id + ''}>
                                                     {destination.destination}
                                                 </SelectItem>
@@ -252,6 +270,20 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
                                                         numberOfMonths={2}
                                                         className="rounded-lg border shadow-sm"
                                                     />
+                                                    {/* Buttons */}
+                                                    <div className="flex justify-end gap-2 mt-2 mb-2 mr-2">
+                                                        <Button
+                                                            size="sm"
+                                                            onClick={() => {
+                                                                if (field.value) {
+                                                                    field.onChange(field.value); // update the form
+                                                                    setCalendarOpen(false); // close popover
+                                                                }
+                                                            }}
+                                                        >
+                                                        Cerrar
+                                                        </Button>
+                                                    </div>
                                                 </PopoverContent>
                                             </Popover>
 
