@@ -281,7 +281,7 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
                                                                 }
                                                             }}
                                                         >
-                                                        Cerrar
+                                                            Cerrar
                                                         </Button>
                                                     </div>
                                                 </PopoverContent>
