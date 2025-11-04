@@ -72,7 +72,7 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
     // Inside SearchFormPage:
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const [loadingDestinations, setLoadingDestinations] = useState(true);
-
+    
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     useEffect(() => {
         const fetchDestinations = async () => {
