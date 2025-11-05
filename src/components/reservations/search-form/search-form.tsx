@@ -69,7 +69,6 @@ export const FormSchema = z.object({
 
 const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
 
-    // Inside SearchFormPage:
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const [loadingDestinations, setLoadingDestinations] = useState(true);
 
@@ -276,8 +275,8 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
                                                             size="sm"
                                                             onClick={() => {
                                                                 if (field.value) {
-                                                                    field.onChange(field.value); // update the form
-                                                                    setCalendarOpen(false); // close popover
+                                                                    field.onChange(field.value);
+                                                                    setCalendarOpen(false);
                                                                 }
                                                             }}
                                                         >
