@@ -14,7 +14,6 @@ import {
   CardDescription,
 } from "@/components/ui/card"
 import { ArrowRight, ArrowUpRight, PlaneTakeoff  } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
 import {
@@ -72,6 +71,9 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
         return `${hours}h ${minutes}m`;
     }
 
+    const [selectedFlightOW, setSelectedFlightOW] = useState<Flight | null>(null);
+    const [selectedFlightRT, setSelectedFlightRT] = useState<Flight | null>(null);
+    
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const [loadingDestinations, setLoadingDestinations] = useState(true);
     
@@ -126,6 +128,22 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
 
         fetchFlights();
     }, [apiUrl, searchData]);
+
+    const [valueRT, setValueRT] = useState<number>(0);
+
+    useEffect(() => {
+        if (!selectedFlightOW || !selectedFlightRT)  return;
+
+        const fetchValueRT = async () => {
+            if (selectedFlightOW.flight_fees[0].valueRT >= selectedFlightRT.flight_fees[0].valueRT) {
+                setValueRT(selectedFlightOW.flight_fees[0].valueRT);
+            } else {
+                setValueRT(selectedFlightRT.flight_fees[0].valueRT);
+            }
+        };
+
+        fetchValueRT();
+    }, [selectedFlightOW, selectedFlightRT]);
     
     if (loadingDestinations) {
         return (
@@ -182,6 +200,14 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                             </div>
                                         </CardHeader>
                                         <CardContent className="p-4">
+                                            <ToggleGroup
+                                                type="single"
+                                                value={selectedFlightOW?.id.toString() || ""}
+                                                onValueChange={(value: string) => {
+                                                    const selected = flightsOW.find(f => f.id.toString() === value);
+                                                    setSelectedFlightOW(selected || null);
+                                                }}
+                                            >
                                             {loadingFlightsOW ? (
                                                 <Skeleton className="w-full h-20" />
                                             ) : flightsOW.length > 0 ? (
@@ -195,7 +221,9 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                                         </div>
                                                         <div className="flex flex-col md:flex-row gap-[10px] p-3 justify-between">
                                                             <div className="w-full md:w-[40px] justify-center items-center flex">
-                                                                <Button className="rounded-full"><ArrowUpRight /></Button>
+                                                                <ToggleGroupItem value={flightOW.id.toString()} aria-label="Seleccionar OW">
+                                                                    <ArrowUpRight />
+                                                                </ToggleGroupItem>
                                                             </div>
                                                             <div className="flex-1 flex flex-col">
                                                                 <label className="text-xl">Desde</label>
@@ -225,6 +253,7 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                             ) : (
                                                 <p>No hay resultados en esta busqueda.</p>
                                             )}
+                                            </ToggleGroup>
                                         </CardContent>
                                     </Card>
 
@@ -240,6 +269,14 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                             </div>
                                         </CardHeader>
                                         <CardContent className="p-4">
+                                            <ToggleGroup
+                                                type="single"
+                                                value={selectedFlightRT?.id.toString() || ""}
+                                                onValueChange={(value: string) => {
+                                                    const selected = flightsRT.find(f => f.id.toString() === value);
+                                                    setSelectedFlightRT(selected || null);
+                                                }}
+                                            >
                                             {loadingFlightsRT ? (
                                                 <Skeleton className="w-full h-20" />
                                             ) : flightsRT.length > 0 ? (
@@ -254,7 +291,9 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                                         
                                                         <div className="flex flex-col md:flex-row gap-[10px] p-3 justify-between">
                                                             <div className="w-full md:w-[40px] justify-center items-center flex">
-                                                                <Button className="rounded-full"><ArrowUpRight /></Button>
+                                                                <ToggleGroupItem value={flightRT.id.toString()} aria-label="Seleccionar OW">
+                                                                    <ArrowUpRight />
+                                                                </ToggleGroupItem>
                                                             </div>
                                                             <div className="flex-1 flex flex-col">
                                                                 <label className="text-xl">Desde</label>
@@ -284,6 +323,7 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                             ) : (
                                                 <p>No hay resultados en esta busqueda.</p>
                                             )}
+                                            </ToggleGroup>
                                         </CardContent>
                                     </Card>
                                 </div>
@@ -361,6 +401,46 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                                 </li>
                                             </ul>
                                             <Separator className="my-2" />
+                                            <ul className="grid gap-3">
+                                                <li className="flex flex-col md:flex-row items-start justify-left">
+                                                    <span className="text-muted-foreground w-full md:w-[80px]">
+                                                        Vuelo de Salida:
+                                                    </span>
+                                                    {selectedFlightOW instanceof Object ? 
+                                                    <div className="flex flex-col">
+                                                        <label>TAH-{selectedFlightOW.flight_no}</label>
+                                                        <label>{selectedFlightOW.from_destination}-({selectedFlightOW.from_iata})</label>
+                                                        <label>Tarifa: {selectedFlightOW.flight_fees[0].fee} - ${selectedFlightOW.flight_fees[0].valueRT}</label>
+                                                    </div>
+                                                        : 
+                                                    <span>-</span>
+                                                    }
+                                                </li>
+                                                <li className="flex flex-col md:flex-row items-start justify-left">
+                                                    <span className="text-muted-foreground w-full md:w-[80px]">
+                                                        Vuelo de Regreso:
+                                                    </span>
+                                                    {selectedFlightRT instanceof Object ? 
+                                                    <div className="flex flex-col">
+                                                        <label>TAH-{selectedFlightRT.flight_no}</label>
+                                                        <label>{selectedFlightRT.from_destination}-({selectedFlightRT.from_iata})</label>
+                                                        <label>Tarifa: {selectedFlightRT.flight_fees[0].fee} - ${selectedFlightRT.flight_fees[0].valueRT}</label>
+                                                    </div>
+                                                        : 
+                                                    <span>-</span>
+                                                    }
+                                                </li>
+                                            </ul>
+
+                                            <Separator className="my-2" />
+                                            <ul className="grid gap-3">
+                                                <li className="flex flex-row items-center justify-between">
+                                                    <span className="text-muted-foreground">
+                                                        Subtotal:
+                                                    </span>
+                                                    {valueRT ? <span>${valueRT}</span> : <span>-</span>}
+                                                </li>
+                                            </ul>
                                         </div>
                                     </CardContent>
                                 </Card>
