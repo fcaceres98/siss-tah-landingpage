@@ -13,8 +13,15 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card"
+import { ArrowRight, ArrowUpRight, PlaneTakeoff  } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator"
 import { Skeleton } from "@/components/ui/skeleton"
+import {
+  ToggleGroup,
+  ToggleGroupItem,
+} from "@/components/ui/toggle-group"
+
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
 
@@ -35,6 +42,35 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
         if (!date) return "—";
         return format(new Date(date), "yyyy-MM-dd", { locale: es });
     };
+    function formatDateYMDToDMY(dateStr?: string) {
+        if (!dateStr) return "—";
+        const [year, month, day] = dateStr.split("-");
+
+        if (!year || !month || !day) return "—";
+
+        // month is 0-based in JS Date
+        const dateObj = new Date(Number(year), Number(month) - 1, Number(day));
+        if (isNaN(dateObj.getTime())) return "—";
+        return format(dateObj, "dd/MM/yyyy", { locale: es });
+    }
+    function getDuration(departure?: string, arrival?: string) {
+        if (!departure || !arrival) return "—";
+
+        // Use a fixed date for both times
+        const refDate = "2025-01-01";
+        const dep = new Date(`${refDate}T${departure}`);
+        const arr = new Date(`${refDate}T${arrival}`);
+
+        if (isNaN(dep.getTime()) || isNaN(arr.getTime())) return "—";
+
+        let diff = (arr.getTime() - dep.getTime()) / 1000; // seconds
+        if (diff < 0) diff += 24 * 3600; // handle overnight flights
+
+        const hours = Math.floor(diff / 3600);
+        const minutes = Math.floor((diff % 3600) / 60);
+
+        return `${hours}h ${minutes}m`;
+    }
 
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const [loadingDestinations, setLoadingDestinations] = useState(true);
@@ -148,10 +184,46 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                         <CardContent className="p-4">
                                             {loadingFlightsOW ? (
                                                 <Skeleton className="w-full h-20" />
+                                            ) : flightsOW.length > 0 ? (
+                                                flightsOW.map((flightOW) => (
+                                                    <div key={flightOW.id} className="flex flex-col rounded-md bg-white dark:bg-slate-950 border-1">
+                                                        <div className="flex flex-col md:flex-row bg-slate-100 dark:bg-muted pl-5 py-1 rounded-t-md">
+                                                            <label>{flightOW.from_destination}({flightOW.from_iata})&nbsp;</label>
+                                                            <ArrowRight className="md:mx-3" />
+                                                            <label>{flightOW.to_destination}({flightOW.to_iata})&nbsp;</label>
+                                                            <label className="flex flex-row"><PlaneTakeoff className="mr-1" /> Vuelo: TAH-{flightOW.flight_no}</label>
+                                                        </div>
+                                                        <div className="flex flex-col md:flex-row gap-[10px] p-3 justify-between">
+                                                            <div className="w-full md:w-[40px] justify-center items-center flex">
+                                                                <Button className="rounded-full"><ArrowUpRight /></Button>
+                                                            </div>
+                                                            <div className="flex-1 flex flex-col">
+                                                                <label className="text-xl">Desde</label>
+                                                                <Separator />
+                                                                <label>{formatDateYMDToDMY(flightOW.date)}</label>
+                                                                <label>{flightOW.departure ? format(new Date(`2025-01-01T${flightOW.departure}`), "h:mm a", { locale: es }) : "—"}</label>
+                                                                <label>{flightOW.from_destination}({flightOW.from_iata})</label>
+                                                            </div>
+                                                            <div className="flex-1 flex flex-col">
+                                                                <label className="text-xl">Hasta</label>
+                                                                <Separator />
+                                                                <label>{formatDateYMDToDMY(flightOW.date)}</label>
+                                                                <label>{flightOW.arrival ? format(new Date(`2025-01-01T${flightOW.arrival}`), "h:mm a", { locale: es }) : "—"}</label>
+                                                                <label>{flightOW.to_destination}({flightOW.to_iata})</label>
+                                                            </div>
+                                                            <div className="flex-1 flex flex-col">
+                                                                <label className="text-xl">Detalle</label>
+                                                                <Separator />
+                                                                <label >Aeronave: {flightOW.plane.description}</label>
+                                                                <label >Duración: {getDuration(flightOW.departure, flightOW.arrival)}</label>
+                                                                <label >Equipaje de mano 10KG.</label>
+                                                                <label >Equipaje de carga 25KG</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))
                                             ) : (
-                                                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                                                    <code className="text-white">{JSON.stringify(flightsOW, null, 2)}</code>
-                                                </pre>
+                                                <p>No hay resultados en esta busqueda.</p>
                                             )}
                                         </CardContent>
                                     </Card>
@@ -170,10 +242,47 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData }) => 
                                         <CardContent className="p-4">
                                             {loadingFlightsRT ? (
                                                 <Skeleton className="w-full h-20" />
+                                            ) : flightsRT.length > 0 ? (
+                                                flightsRT.map((flightRT) => (
+                                                    <div key={flightRT.id} className="flex flex-col rounded-md  bg-white dark:bg-slate-950 border-1">
+                                                        <div className="flex flex-col md:flex-row bg-slate-100 dark:bg-muted pl-5 py-1 rounded-t-md">
+                                                            <label>{flightRT.from_destination}({flightRT.from_iata})&nbsp;</label>
+                                                            <ArrowRight className="md:mx-3" />
+                                                            <label>{flightRT.to_destination}({flightRT.to_iata})&nbsp;</label>
+                                                            <label className="flex flex-row"><PlaneTakeoff className="mr-1" />Vuelo: TAH-{flightRT.flight_no}</label>
+                                                        </div>
+                                                        
+                                                        <div className="flex flex-col md:flex-row gap-[10px] p-3 justify-between">
+                                                            <div className="w-full md:w-[40px] justify-center items-center flex">
+                                                                <Button className="rounded-full"><ArrowUpRight /></Button>
+                                                            </div>
+                                                            <div className="flex-1 flex flex-col">
+                                                                <label className="text-xl">Desde</label>
+                                                                <Separator />
+                                                                <label>{formatDateYMDToDMY(flightRT.date)}</label>
+                                                                <label>{flightRT.departure ? format(new Date(`2025-01-01T${flightRT.departure}`), "h:mm a", { locale: es }) : "—"}</label>
+                                                                <label>{flightRT.from_destination}({flightRT.from_iata})</label>
+                                                            </div>
+                                                            <div className="flex-1 flex flex-col">
+                                                                <label className="text-xl">Hasta</label>
+                                                                <Separator />
+                                                                <label>{formatDateYMDToDMY(flightRT.date)}</label>
+                                                                <label>{flightRT.arrival ? format(new Date(`2025-01-01T${flightRT.arrival}`), "h:mm a", { locale: es }) : "—"}</label>
+                                                                <label>{flightRT.to_destination}({flightRT.to_iata})</label>
+                                                            </div>
+                                                            <div className="flex-1 flex flex-col">
+                                                                <label className="text-xl">Detalle</label>
+                                                                <Separator />
+                                                                <label >Aeronave: {flightRT.plane.description}</label>
+                                                                <label >Duración: {getDuration(flightRT.departure, flightRT.arrival)}</label>
+                                                                <label >Equipaje de mano 10KG.</label>
+                                                                <label >Equipaje de carga 25KG</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                ))
                                             ) : (
-                                                <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                                                    <code className="text-white">{JSON.stringify(flightsRT, null, 2)}</code>
-                                                </pre>
+                                                <p>No hay resultados en esta busqueda.</p>
                                             )}
                                         </CardContent>
                                     </Card>
