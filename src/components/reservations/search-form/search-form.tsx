@@ -42,6 +42,7 @@ import { Destination } from "@/components/types/destination";
 
 interface SearchFormPageProps {
   onSearch?: (data: z.infer<typeof FormSchema>) => void;
+  onNext?: (data: number) => void;
 }
 
 export const FormSchema = z.object({
@@ -67,7 +68,7 @@ export const FormSchema = z.object({
     path: ["paxCount"],
 });
 
-const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
+const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch, onNext }) => {
 
     const [destinations, setDestinations] = useState<Destination[]>([]);
     const [loadingDestinations, setLoadingDestinations] = useState(true);
@@ -161,8 +162,9 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
     }, [form]);
 
     function onSubmit(data: z.infer<typeof FormSchema>) {
-        if (onSearch) {
+        if (onSearch && onNext) {
             onSearch(data);
+            onNext(1);
         }
     };
     
@@ -170,7 +172,7 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
         <div>
             <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <Card className="max-w-screen-xl mx-auto bg-background border p-4">
+                    <Card className="w-7xl mx-auto bg-background border p-4">
                         <CardHeader className="border-b">
                             <CardTitle>Busqueda de Vuelos</CardTitle>
                         </CardHeader>
@@ -414,7 +416,7 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch }) => {
                                     )}
                                 />
                             </div>
-                            <div className="w-40">
+                            <div className="w-full md:w-48">
                                 <Button type="submit" className="w-full">
                                     Ejecutar Busqueda <ArrowUpRight />
                                 </Button>
