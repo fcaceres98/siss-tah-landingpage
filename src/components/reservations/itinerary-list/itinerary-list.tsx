@@ -157,33 +157,38 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData, onNex
                         ) : flightsOW.length > 0 ? (
                             flightsOW.map((flightOW) => (
                                 <div key={flightOW.id} className="flex flex-col rounded-md bg-white dark:bg-slate-950 border-1">
-                                    <div className="flex flex-col md:flex-row bg-slate-100 dark:bg-muted pl-5 py-1 rounded-t-md">
-                                        <label>{flightOW.from_destination}({flightOW.from_iata})&nbsp;</label>
-                                        <ArrowRight className="md:mx-3" />
-                                        <label>{flightOW.to_destination}({flightOW.to_iata})&nbsp;</label>
-                                        <label className="flex flex-row"><PlaneTakeoff className="mr-1" /> Vuelo: TAH-{flightOW.flight_no}</label>
+                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center bg-slate-100 dark:bg-muted p-2 rounded-t-md">
+                                        <div className="col-span-2 flex flex-col items-start md:flex-row md:items-center md:justify-between">
+                                            <label>{flightOW.from_destination}({flightOW.from_iata})</label>
+                                            <ArrowRight className="md:mx-4" />
+                                            <label>{flightOW.to_destination}({flightOW.to_iata})</label>
+                                        </div>
+                                        <div className="col-span-1 flex flex-row gap-4">
+                                            <PlaneTakeoff />
+                                            <label> Vuelo: TAH-{flightOW.flight_no}</label>
+                                        </div>
                                     </div>
                                     <div className="flex flex-col md:flex-row gap-[10px] p-3 justify-between">
-                                        <div className="w-full md:w-[40px] justify-center items-center flex">
+                                        <div className="flex w-full md:w-[40px] justify-center items-center ">
                                             <ToggleGroupItem value={flightOW.id.toString()} aria-label="Seleccionar OW">
                                                 <ArrowUpRight />
                                             </ToggleGroupItem>
                                         </div>
-                                        <div className="flex-1 flex flex-col">
+                                        <div className="flex-1 md:flex-none md:w-[25%] flex flex-col">
                                             <label className="text-xl">Desde</label>
                                             <Separator />
                                             <label>{formatDateYMDToDMY(flightOW.date)}</label>
                                             <label>{flightOW.departure ? format(new Date(`2025-01-01T${flightOW.departure}`), "h:mm a", { locale: es }) : "—"}</label>
                                             <label>{flightOW.from_destination}({flightOW.from_iata})</label>
                                         </div>
-                                        <div className="flex-1 flex flex-col">
+                                        <div className="flex-1 md:flex-none md:w-[25%] flex flex-col">
                                             <label className="text-xl">Hasta</label>
                                             <Separator />
                                             <label>{formatDateYMDToDMY(flightOW.date)}</label>
                                             <label>{flightOW.arrival ? format(new Date(`2025-01-01T${flightOW.arrival}`), "h:mm a", { locale: es }) : "—"}</label>
                                             <label>{flightOW.to_destination}({flightOW.to_iata})</label>
                                         </div>
-                                        <div className="flex-1 flex flex-col">
+                                        <div className="flex-1 md:flex-auto flex flex-col">
                                             <label className="text-xl">Detalle</label>
                                             <Separator />
                                             <label >Aeronave: {flightOW.plane.description}</label>
@@ -226,34 +231,38 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData, onNex
                         ) : flightsRT.length > 0 ? (
                             flightsRT.map((flightRT) => (
                                 <div key={flightRT.id} className="flex flex-col rounded-md  bg-white dark:bg-slate-950 border-1">
-                                    <div className="flex flex-col md:flex-row bg-slate-100 dark:bg-muted pl-5 py-1 rounded-t-md">
-                                        <label>{flightRT.from_destination}({flightRT.from_iata})&nbsp;</label>
-                                        <ArrowRight className="md:mx-3" />
-                                        <label>{flightRT.to_destination}({flightRT.to_iata})&nbsp;</label>
-                                        <label className="flex flex-row"><PlaneTakeoff className="mr-1" />Vuelo: TAH-{flightRT.flight_no}</label>
+                                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-center bg-slate-100 dark:bg-muted p-2 rounded-t-md">
+                                        <div className="col-span-2 flex flex-col items-start md:flex-row md:items-center md:justify-between">
+                                            <label>{flightRT.from_destination}({flightRT.from_iata})</label>
+                                            <ArrowRight className="md:mx-4" />
+                                            <label>{flightRT.to_destination}({flightRT.to_iata})</label>
+                                        </div>
+                                        <div className="col-span-1 flex flex-row gap-4">
+                                            <PlaneTakeoff />
+                                            <label> Vuelo: TAH-{flightRT.flight_no}</label>
+                                        </div>
                                     </div>
-                                    
                                     <div className="flex flex-col md:flex-row gap-[10px] p-3 justify-between">
-                                        <div className="w-full md:w-[40px] justify-center items-center flex">
+                                        <div className="flex w-full md:w-[40px] justify-center items-center">
                                             <ToggleGroupItem value={flightRT.id.toString()} aria-label="Seleccionar OW">
                                                 <ArrowUpRight />
                                             </ToggleGroupItem>
                                         </div>
-                                        <div className="flex-1 flex flex-col">
+                                        <div className="flex-1 md:flex-none md:w-[25%] flex flex-col">
                                             <label className="text-xl">Desde</label>
                                             <Separator />
                                             <label>{formatDateYMDToDMY(flightRT.date)}</label>
                                             <label>{flightRT.departure ? format(new Date(`2025-01-01T${flightRT.departure}`), "h:mm a", { locale: es }) : "—"}</label>
                                             <label>{flightRT.from_destination}({flightRT.from_iata})</label>
                                         </div>
-                                        <div className="flex-1 flex flex-col">
+                                        <div className="flex-1 md:flex-none md:w-[25%] flex flex-col">
                                             <label className="text-xl">Hasta</label>
                                             <Separator />
                                             <label>{formatDateYMDToDMY(flightRT.date)}</label>
                                             <label>{flightRT.arrival ? format(new Date(`2025-01-01T${flightRT.arrival}`), "h:mm a", { locale: es }) : "—"}</label>
                                             <label>{flightRT.to_destination}({flightRT.to_iata})</label>
                                         </div>
-                                        <div className="flex-1 flex flex-col">
+                                        <div className="flex-1 md:flex-auto flex flex-col">
                                             <label className="text-xl">Detalle</label>
                                             <Separator />
                                             <label >Aeronave: {flightRT.plane.description}</label>

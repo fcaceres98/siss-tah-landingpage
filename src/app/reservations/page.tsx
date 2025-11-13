@@ -123,10 +123,20 @@ export default function Home() {
   return (
     <>
       <Navbar03Page />
-      <div className="max-w-screen flex flex-col gap-2 p-4 bg-muted">
-        <SearchFormPage onNext={handleNext} onSearch={setSearchData}/>
+      <div className="flex flex-col max-w-screen items-center gap-2 p-4 bg-muted">
 
-        <Card className="w-7xl mx-auto bg-background border p-4">
+        <Card className="flex flex-col w-full max-w-5xl mx-auto border p-4 bg-background">
+          <CardHeader className="border-b">
+            <CardTitle>Busqueda de Vuelos</CardTitle>
+          </CardHeader>
+          <CardContent className="grid grid-cols-1 gap-4">
+            <div className="col-span-1">
+              <SearchFormPage onNext={handleNext} onSearch={setSearchData}/>
+            </div>
+          </CardContent>
+        </Card>
+
+        <Card className="flex flex-col w-full max-w-5xl mx-auto border p-4 bg-background">
           <CardHeader className="border-b">
             <CardTitle>{title}</CardTitle>
           </CardHeader>
@@ -144,6 +154,7 @@ export default function Home() {
             </div>
           </CardContent>
         </Card>
+
       </div>
       <Footer04Page />
     </>

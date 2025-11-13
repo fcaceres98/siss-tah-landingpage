@@ -24,7 +24,9 @@ import {
   FormField,
   FormItem,
   FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input"
 
 import { Flight } from "@/components/types/flights";
 import { FormSchema } from "@/components/reservations/search-form/search-form";
@@ -37,7 +39,8 @@ interface PassengerListPageProps {
 }
 
 const FormSchemaPassengers = z.object({
-  terms: z.boolean().default(false).optional(),
+  terms: z.boolean(),
+  name: z.string().nonempty("Por favor ingrese un nombre.")
 })
 
 const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNext, selectedFlightOW, selectedFlightRT }) => {
@@ -45,6 +48,7 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
         resolver: zodResolver(FormSchemaPassengers),
         defaultValues: {
             terms: false,
+            name: "",
         },
     })
 
@@ -77,7 +81,22 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                             </div>
                         </CardHeader>
                         <CardContent className="p-4">
-                            <p>Passenger List Component</p>
+                            <FormField
+                                control={form.control}
+                                name="name"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Username</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="shadcn" {...field} />
+                                        </FormControl>
+                                        <FormDescription>
+                                            This is your public display name.
+                                        </FormDescription>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
                         </CardContent>
                     </Card>
                     <div className="flex flex-col mt-4">
@@ -94,7 +113,7 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                                     </FormControl>
                                     <div className="space-y-1 leading-none">
                                         <FormLabel>
-                                            Aceptar Terminos y Condiciones. <Link href="/examples/forms" className="flex flex-row items-center mr-4"><ArrowRight /> Leer mas.</Link>
+                                            Aceptar Terminos y Condiciones. <Link href="/terms-conditions" className="flex flex-row items-center mr-4"><ArrowRight /> Leer mas.</Link>
                                         </FormLabel>
                                         <FormDescription>
                                             Usted acepta los terminos y condiciones, asi como las politica internas de la empresa.

@@ -3,12 +3,6 @@
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ArrowRightLeft, ChevronsUpDown, Minus, Plus, CalendarIcon  } from "lucide-react";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
 
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
@@ -37,6 +31,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { Separator } from "@/components/ui/separator";
 
 import { Destination } from "@/components/types/destination";
 
@@ -169,263 +164,263 @@ const SearchFormPage: React.FC<SearchFormPageProps> = ({ onSearch, onNext }) => 
     };
     
     return (
-        <div>
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)}>
-                    <Card className="w-7xl mx-auto bg-background border p-4">
-                        <CardHeader className="border-b">
-                            <CardTitle>Busqueda de Vuelos</CardTitle>
-                        </CardHeader>
-                        <CardContent className="flex flex-col items-center lg:flex-row gap-4">
-                            <div className="flex-1 w-full">
-                                <FormField
-                                    control={form.control}
-                                    name="from"
-                                    render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Desde</FormLabel>
-                                        <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loadingDestinations}>
-                                            <FormControl>
-                                                <SelectTrigger className="w-full">
-                                                    <SelectValue placeholder={loadingDestinations ? "Cargando destinos..." : "Selecciona un destino"} />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent className="w-full">
-                                                {destinations.map((destination) => (
-                                                    <SelectItem key={destination.id} value={destination.id + ''}>
-                                                        {destination.destination}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                        <FormDescription>
-                                            Selecciona tu lugar de salida
-                                        </FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <div className="w-14 flex justify-center">
-                                <ArrowRightLeft />
-                            </div>
-                            <div className="flex-1 w-full">
-                                <FormField
-                                    control={form.control}
-                                    name="to"
-                                    render={({ field }) => (
-                                    <FormItem>
-                                        <FormLabel>Hasta</FormLabel>
-                                        <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loadingDestinations}>
-                                            <FormControl>
-                                                <SelectTrigger className="w-full">
-                                                    <SelectValue placeholder={loadingDestinations ? "Cargando destinos..." : "Selecciona un destino"} />
-                                                </SelectTrigger>
-                                            </FormControl>
-                                            <SelectContent className="w-full">
-                                                {destinations.map((destination) => (
-                                                    <SelectItem key={destination.id} value={destination.id + ''}>
-                                                        {destination.destination}
-                                                    </SelectItem>
-                                                ))}
-                                            </SelectContent>
-                                        </Select>
-                                        <FormDescription>
-                                            Selecciona tu lugar de llegada
-                                        </FormDescription>
-                                        <FormMessage />
-                                    </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <div className="flex-1 w-full">
-                                <FormField
-                                    control={form.control}
-                                    name="dateRange"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Fechas</FormLabel>
-                                            <FormControl>
+        <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)}>
 
-                                            <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+                <div className="flex flex-col">
+                    <div className="flex flex-col md:flex-row gap-4">
+                        <div className="flex-1">
+                            <FormField
+                                control={form.control}
+                                name="from"
+                                render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Desde</FormLabel>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loadingDestinations}>
+                                        <FormControl>
+                                            <SelectTrigger className="w-full">
+                                                <SelectValue placeholder={loadingDestinations ? "Cargando destinos..." : "Selecciona un destino"} />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent className="w-full">
+                                            {destinations.map((destination) => (
+                                                <SelectItem key={destination.id} value={destination.id + ''}>
+                                                    {destination.destination}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormDescription>
+                                        Selecciona tu lugar de salida
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                                )}
+                            />
+                        </div>
+                        <div className="w-14 flex items-center justify-center">
+                            <ArrowRightLeft />
+                        </div>
+                        <div className="flex-1">
+                            <FormField
+                                control={form.control}
+                                name="to"
+                                render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Hasta</FormLabel>
+                                    <Select onValueChange={field.onChange} defaultValue={field.value} disabled={loadingDestinations}>
+                                        <FormControl>
+                                            <SelectTrigger className="w-full">
+                                                <SelectValue placeholder={loadingDestinations ? "Cargando destinos..." : "Selecciona un destino"} />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent className="w-full">
+                                            {destinations.map((destination) => (
+                                                <SelectItem key={destination.id} value={destination.id + ''}>
+                                                    {destination.destination}
+                                                </SelectItem>
+                                            ))}
+                                        </SelectContent>
+                                    </Select>
+                                    <FormDescription>
+                                        Selecciona tu lugar de llegada
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                                )}
+                            />
+                        </div>
+                        <div className="flex-1">
+                            <FormField
+                                control={form.control}
+                                name="dateRange"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Fechas</FormLabel>
+                                        <FormControl>
+
+                                        <Popover open={calendarOpen} onOpenChange={setCalendarOpen}>
+                                            <PopoverTrigger asChild>
+                                                <Button
+                                                    variant="outline"
+                                                    role="combobox"
+                                                    aria-expanded={calendarOpen}
+                                                    className="w-full justify-between"
+                                                >
+                                                    {field.value ? 
+                                                        `${field.value.from?.toLocaleDateString()} - ${field.value.to?.toLocaleDateString()}` 
+                                                        : "Seleccione un rango de fecha"
+                                                    }
+                                                    <CalendarIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                                </Button>
+                                            </PopoverTrigger>
+                                            <PopoverContent className="w-auto overflow-hidden p-0" align="start">
+                                                <Calendar
+                                                    mode="range"
+                                                    defaultMonth={field.value.from}
+                                                    selected={field.value}
+                                                    onSelect={field.onChange}
+                                                    numberOfMonths={2}
+                                                    className="rounded-lg border shadow-sm"
+                                                />
+                                                {/* Buttons */}
+                                                <div className="flex justify-end gap-2 mt-2 mb-2 mr-2">
+                                                    <Button
+                                                        size="sm"
+                                                        onClick={() => {
+                                                            if (field.value) {
+                                                                field.onChange(field.value); // update the form
+                                                                setCalendarOpen(false); // close popover
+                                                            }
+                                                        }}
+                                                    >
+                                                        Cerrar
+                                                    </Button>
+                                                </div>
+                                            </PopoverContent>
+                                        </Popover>
+
+                                        </FormControl>
+                                        <FormDescription>
+                                            Seleccione un rango de fecha
+                                        </FormDescription>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        <div className="flex-1">
+                            <FormField
+                                control={form.control}
+                                name="paxCount"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Pasajeros</FormLabel>
+                                        <FormControl>
+
+                                            <Popover open={paxCountOpen} onOpenChange={setPaxCountOpen}>
                                                 <PopoverTrigger asChild>
                                                     <Button
                                                         variant="outline"
                                                         role="combobox"
-                                                        aria-expanded={calendarOpen}
+                                                        aria-expanded={paxCountOpen}
                                                         className="w-full justify-between"
                                                     >
-                                                        {field.value ? 
-                                                            `${field.value.from?.toLocaleDateString()} - ${field.value.to?.toLocaleDateString()}` 
-                                                            : "Seleccione un rango de fecha"
-                                                        }
-                                                        <CalendarIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                                                        Cantidad de Pasajeros { cantPax }
+                                                        <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                                                     </Button>
                                                 </PopoverTrigger>
-                                                <PopoverContent className="w-auto overflow-hidden p-0" align="start">
-                                                    <Calendar
-                                                        mode="range"
-                                                        defaultMonth={field.value.from}
-                                                        selected={field.value}
-                                                        onSelect={field.onChange}
-                                                        numberOfMonths={2}
-                                                        className="rounded-lg border shadow-sm"
-                                                    />
-                                                    {/* Buttons */}
-                                                    <div className="flex justify-end gap-2 mt-2 mb-2 mr-2">
-                                                        <Button
-                                                            size="sm"
-                                                            onClick={() => {
-                                                                if (field.value) {
-                                                                    field.onChange(field.value); // update the form
-                                                                    setCalendarOpen(false); // close popover
-                                                                }
-                                                            }}
-                                                        >
-                                                            Cerrar
-                                                        </Button>
+                                                <PopoverContent className="w-[300px] p-1">
+                                                    <div className="flex flex-col gap-2 p-1">
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row justify-between">
+                                                                <Label>Adultos: </Label>
+                                                                <div className="flex items-center space-x-2">
+                                                                    <Button variant="outline" size="icon" onClick={() => handleMinus('ADULT')}>
+                                                                        <Minus className="h-4 w-4" />
+                                                                    </Button>
+                                                                    <Input
+                                                                        type="number"
+                                                                        value={field.value.paxAdult}
+                                                                        readOnly
+                                                                        className="w-20 text-center"
+                                                                    />
+                                                                    <Button variant="outline" size="icon" onClick={() => handlePlus('ADULT')}>
+                                                                        <Plus className="h-4 w-4" />
+                                                                    </Button>
+                                                                </div>
+                                                            </div>
+                                                            <span className="text-sm text-gray-500 dark:text-gray-400">Personas de 13 años a 59 años</span>
+                                                        </div>
+                                                        
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row justify-between">
+                                                                <Label>Menores: </Label>
+                                                                <div className="flex items-center space-x-2">
+                                                                    <Button variant="outline" size="icon" onClick={() => handleMinus('MINOR')}>
+                                                                        <Minus className="h-4 w-4" />
+                                                                    </Button>
+                                                                    <Input
+                                                                        type="number"
+                                                                        value={field.value.paxMinor}
+                                                                        readOnly
+                                                                        className="w-20 text-center"
+                                                                    />
+                                                                    <Button variant="outline" size="icon" onClick={() => handlePlus('MINOR')}>
+                                                                        <Plus className="h-4 w-4" />
+                                                                    </Button>
+                                                                </div>
+                                                            </div>
+                                                            <span className="text-sm text-gray-500 dark:text-gray-400">Niños de 3 años a 12 años</span>
+                                                        </div>
+
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row justify-between">
+                                                                <Label>Tercera Edad: </Label>
+                                                                <div className="flex items-center space-x-2">
+                                                                    <Button variant="outline" size="icon" onClick={() => handleMinus('SENIOR')}>
+                                                                        <Minus className="h-4 w-4" />
+                                                                    </Button>
+                                                                    <Input
+                                                                        type="number"
+                                                                        value={field.value.paxSenior}
+                                                                        readOnly
+                                                                        className="w-20 text-center"
+                                                                    />
+                                                                    <Button variant="outline" size="icon" onClick={() => handlePlus('SENIOR')}>
+                                                                        <Plus className="h-4 w-4" />
+                                                                    </Button>
+                                                                </div>
+                                                            </div>
+                                                            <span className="text-sm text-gray-500 dark:text-gray-400">Personas de 60 años en adelante</span>
+                                                        </div>
+
+                                                        <div className="flex flex-col">
+                                                            <div className="flex flex-row justify-between">
+                                                                <Label>Infantes: </Label>
+                                                                <div className="flex items-center space-x-2">
+                                                                    <Button variant="outline" size="icon" onClick={() => handleMinus('INFANT')}>
+                                                                        <Minus className="h-4 w-4" />
+                                                                    </Button>
+                                                                    <Input
+                                                                        type="number"
+                                                                        value={field.value.paxInfant}
+                                                                        readOnly
+                                                                        className="w-20 text-center"
+                                                                    />
+                                                                    <Button variant="outline" size="icon" onClick={() => handlePlus('INFANT')}>
+                                                                        <Plus className="h-4 w-4" />
+                                                                    </Button>
+                                                                </div>
+                                                            </div>
+                                                            <span className="text-sm text-gray-500 dark:text-gray-400">Niños de 0 años a 2 años</span>
+                                                        </div>
                                                     </div>
                                                 </PopoverContent>
                                             </Popover>
 
-                                            </FormControl>
-                                            <FormDescription>
-                                                Seleccione un rango de fecha
-                                            </FormDescription>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <div className="flex-1 w-full">
-                                <FormField
-                                    control={form.control}
-                                    name="paxCount"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel>Pasajeros</FormLabel>
-                                            <FormControl>
-
-                                                <Popover open={paxCountOpen} onOpenChange={setPaxCountOpen}>
-                                                    <PopoverTrigger asChild>
-                                                        <Button
-                                                            variant="outline"
-                                                            role="combobox"
-                                                            aria-expanded={paxCountOpen}
-                                                            className="w-full justify-between"
-                                                        >
-                                                            Cantidad de Pasajeros { cantPax }
-                                                            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
-                                                        </Button>
-                                                    </PopoverTrigger>
-                                                    <PopoverContent className="w-[300px] p-1">
-                                                        <div className="flex flex-col gap-2 p-1">
-                                                            <div className="flex flex-col">
-                                                                <div className="flex flex-row justify-between">
-                                                                    <Label>Adultos: </Label>
-                                                                    <div className="flex items-center space-x-2">
-                                                                        <Button variant="outline" size="icon" onClick={() => handleMinus('ADULT')}>
-                                                                            <Minus className="h-4 w-4" />
-                                                                        </Button>
-                                                                        <Input
-                                                                            type="number"
-                                                                            value={field.value.paxAdult}
-                                                                            readOnly
-                                                                            className="w-20 text-center"
-                                                                        />
-                                                                        <Button variant="outline" size="icon" onClick={() => handlePlus('ADULT')}>
-                                                                            <Plus className="h-4 w-4" />
-                                                                        </Button>
-                                                                    </div>
-                                                                </div>
-                                                                <span className="text-sm text-gray-500 dark:text-gray-400">Personas de 13 años a 59 años</span>
-                                                            </div>
-                                                            
-                                                            <div className="flex flex-col">
-                                                                <div className="flex flex-row justify-between">
-                                                                    <Label>Menores: </Label>
-                                                                    <div className="flex items-center space-x-2">
-                                                                        <Button variant="outline" size="icon" onClick={() => handleMinus('MINOR')}>
-                                                                            <Minus className="h-4 w-4" />
-                                                                        </Button>
-                                                                        <Input
-                                                                            type="number"
-                                                                            value={field.value.paxMinor}
-                                                                            readOnly
-                                                                            className="w-20 text-center"
-                                                                        />
-                                                                        <Button variant="outline" size="icon" onClick={() => handlePlus('MINOR')}>
-                                                                            <Plus className="h-4 w-4" />
-                                                                        </Button>
-                                                                    </div>
-                                                                </div>
-                                                                <span className="text-sm text-gray-500 dark:text-gray-400">Niños de 3 años a 12 años</span>
-                                                            </div>
-
-                                                            <div className="flex flex-col">
-                                                                <div className="flex flex-row justify-between">
-                                                                    <Label>Tercera Edad: </Label>
-                                                                    <div className="flex items-center space-x-2">
-                                                                        <Button variant="outline" size="icon" onClick={() => handleMinus('SENIOR')}>
-                                                                            <Minus className="h-4 w-4" />
-                                                                        </Button>
-                                                                        <Input
-                                                                            type="number"
-                                                                            value={field.value.paxSenior}
-                                                                            readOnly
-                                                                            className="w-20 text-center"
-                                                                        />
-                                                                        <Button variant="outline" size="icon" onClick={() => handlePlus('SENIOR')}>
-                                                                            <Plus className="h-4 w-4" />
-                                                                        </Button>
-                                                                    </div>
-                                                                </div>
-                                                                <span className="text-sm text-gray-500 dark:text-gray-400">Personas de 60 años en adelante</span>
-                                                            </div>
-
-                                                            <div className="flex flex-col">
-                                                                <div className="flex flex-row justify-between">
-                                                                    <Label>Infantes: </Label>
-                                                                    <div className="flex items-center space-x-2">
-                                                                        <Button variant="outline" size="icon" onClick={() => handleMinus('INFANT')}>
-                                                                            <Minus className="h-4 w-4" />
-                                                                        </Button>
-                                                                        <Input
-                                                                            type="number"
-                                                                            value={field.value.paxInfant}
-                                                                            readOnly
-                                                                            className="w-20 text-center"
-                                                                        />
-                                                                        <Button variant="outline" size="icon" onClick={() => handlePlus('INFANT')}>
-                                                                            <Plus className="h-4 w-4" />
-                                                                        </Button>
-                                                                    </div>
-                                                                </div>
-                                                                <span className="text-sm text-gray-500 dark:text-gray-400">Niños de 0 años a 2 años</span>
-                                                            </div>
-                                                        </div>
-                                                    </PopoverContent>
-                                                </Popover>
-
-                                            </FormControl>
-                                            <FormDescription>
-                                                Seleccione cantidad de pasajeros
-                                            </FormDescription>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-                            <div className="w-full md:w-48">
-                                <Button type="submit" className="w-full">
-                                    Ejecutar Busqueda <ArrowUpRight />
-                                </Button>
-                            </div>
-                        </CardContent>
-                    </Card>
-                </form>
-            </Form>
-        </div>
+                                        </FormControl>
+                                        <FormDescription>
+                                            Seleccione cantidad de pasajeros
+                                        </FormDescription>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-row w-full">
+                        <Separator className="my-4" />
+                    </div>
+                    <div className="flex flex-row w-full items-center justify-end">
+                        <Button type="submit" className="w-full md:w-[200px]">
+                            Ejecutar Busqueda <ArrowUpRight />
+                        </Button>
+                    </div>
+                </div>
+                
+            </form>
+        </Form>
     );
 };
 
