@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowUpRight, ArrowRightLeft, ChevronsUpDown, Minus, Plus, CalendarIcon  } from "lucide-react";
 
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar } from "@/components/ui/calendar"
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -30,7 +30,7 @@ import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 import { Separator } from "@/components/ui/separator";
 
 import { Destination } from "@/components/types/destination";
