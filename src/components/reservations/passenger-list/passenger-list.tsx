@@ -71,6 +71,15 @@ const FormSchemaPassengers = z.object({
   minorPassengers: z.array(PassengerSchema),
   seniorPassengers: z.array(PassengerSchema),
   infantPassengers: z.array(PassengerSchema),
+
+  client_id_type: z.string().nonempty("Por favor seleccione un tipo de documento."),
+  client_id: z.string().nonempty("Por favor ingrese una identidad."),
+  client_first_name: z.string().nonempty("Por favor ingrese sus nombre."),
+  client_last_name: z.string().nonempty("Por favor ingrese sus apellidos."),
+  client_telephone: z.string().nonempty("Por favor ingrese un numero de telefono."),
+  client_email: z.string()
+    .nonempty("Por favor ingrese un correo.")
+    .email("Por favor ingrese un correo válido."),
 })
 
 const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNext, selectedFlightOW, selectedFlightRT }) => {
@@ -82,6 +91,11 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
     const genderTypes = [
         { value: "MASCULINO", label: "MASCULINO" },
         { value: "FEMENINO", label: "FEMENINO" },
+    ];
+    const clientIdTypes = [
+        { value: "HNDNI", label: "Identidad Nacional" },
+        { value: "HNDR", label: "Identidad Residencial" },
+        { value: "PPN", label: "Pasaporte" },
     ];
 
     const [countries, setCountries] = useState<Country[]>([]);
@@ -155,6 +169,12 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 lastName: "",
                 genderType: "",
             })),
+
+            client_id_type: "",
+            client_first_name: "",
+            client_last_name: "",
+            client_telephone: "",
+            client_email: "",
         },
     });
 
@@ -210,7 +230,7 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                                 <div className="flex flex-col">
                                     {adultFields.map((field, index: number) => (
                                     <div key={field.id} className="flex flex-row w-full items-start">
-                                        <div className="flex flex-col gap-2">
+                                        <div className="flex flex-col gap-2 w-full">
                                             {index > 0 && <Separator className="mt-4"/>}
                                             <div className="flex flex-row w-full items-start">
                                                 <label>Documento: Adulto {index + 1}</label>
@@ -1114,6 +1134,129 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                     {/* Fin lista de pasajeros infante */}
 
                     {/* Inicio formulario de contacto */}
+                    <Card className="gap-0 py-0 rounded-sm border-2">
+                        <CardHeader className="flex flex-row items-start bg-muted/50 py-2">
+                            <div className="grid gap-0.5">
+                                <CardTitle className="group flex items-center gap-2 text-lg">
+                                    Información de Contacto
+                                </CardTitle>
+                                <CardDescription>
+                                    Ingrese toda la informacion que se le solicita.
+                                </CardDescription>
+                            </div>
+                        </CardHeader>
+                        <CardContent className="p-4">
+                            <div className="flex flex-col mt-4 gap-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="w-full md:flex-1">
+                                        <FormField
+                                            control={form.control}
+                                            name={"client_id_type"}
+                                            render={({ field }) => (
+                                            <FormItem className="w-full md:flex-1">
+                                                <FormLabel>Tipo de Identidad</FormLabel>
+                                                <Select onValueChange={field.onChange} defaultValue={field.value}>
+                                                    <FormControl>
+                                                        <SelectTrigger className="w-full md:flex-1">
+                                                            <SelectValue placeholder="Tipo ID ..." />
+                                                        </SelectTrigger>
+                                                    </FormControl>
+                                                    <SelectContent className="w-full md:flex-1">
+                                                        {clientIdTypes.map((idType) => (
+                                                            <SelectItem key={idType.value} value={idType.value}>
+                                                                {idType.label}
+                                                            </SelectItem>
+                                                        ))}
+                                                    </SelectContent>
+                                                </Select>
+                                                <FormMessage />
+                                            </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="w-full md:flex-1">
+                                        <FormField
+                                            control={form.control}
+                                            name={"client_id"}
+                                            render={({ field }) => (
+                                                <FormItem className="w-full md:flex-1">
+                                                    <FormLabel>Identidad</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Ingrese su Identidad" {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="w-full md:flex-1">
+                                        <FormField
+                                            control={form.control}
+                                            name={"client_first_name"}
+                                            render={({ field }) => (
+                                                <FormItem className="w-full md:flex-1">
+                                                    <FormLabel>Nombres</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Ingrese su nombre" {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="w-full md:flex-1">
+                                        <FormField
+                                            control={form.control}
+                                            name={"client_last_name"}
+                                            render={({ field }) => (
+                                                <FormItem className="w-full md:flex-1">
+                                                    <FormLabel>Apellidos</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Ingrese su Apellido" {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="w-full md:flex-1">
+                                        <FormField
+                                            control={form.control}
+                                            name={"client_telephone"}
+                                            render={({ field }) => (
+                                                <FormItem className="w-full md:flex-1">
+                                                    <FormLabel>Telefono</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Ingrese un Telefono" {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                    <div className="w-full md:flex-1">
+                                        <FormField
+                                            control={form.control}
+                                            name={"client_email"}
+                                            render={({ field }) => (
+                                                <FormItem className="w-full md:flex-1">
+                                                    <FormLabel>Correo</FormLabel>
+                                                    <FormControl>
+                                                        <Input placeholder="Ingrese un Correo" {...field} />
+                                                    </FormControl>
+                                                    <FormMessage />
+                                                </FormItem>
+                                            )}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </CardContent>
+                    </Card>
                     {/* Fin formulario de contacto */}
 
                     <Separator />
@@ -1131,7 +1274,10 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                                     </FormControl>
                                     <div className="space-y-1 leading-none">
                                         <FormLabel>
-                                            Aceptar Terminos y Condiciones. <Link href="/terms-conditions" className="flex flex-row items-center mr-4"><ArrowRight /> Leer mas.</Link>
+                                            Aceptar Terminos y Condiciones.
+                                            <Link href="/terms-conditions" target="_blank" className="ml-4 text-primary hover:underline flex flex-row items-center">
+                                                <ArrowRight /> Leer mas.
+                                            </Link>
                                         </FormLabel>
                                         <FormDescription>
                                             Usted acepta los terminos y condiciones, asi como las politica internas de la empresa.
