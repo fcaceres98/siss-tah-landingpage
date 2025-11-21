@@ -115,7 +115,7 @@ const ItineraryListPage: React.FC<ItineraryListPageProps> = ({ searchData, onNex
             }
 
             if (onSelectedFlightsRT) {
-                onSelectedFlightsRT(selectedFlightOW);
+                onSelectedFlightsRT(selectedFlightRT);
             }
         };
 

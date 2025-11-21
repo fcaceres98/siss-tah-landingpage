@@ -69,7 +69,7 @@ export default function Home() {
     const fetchValueRT = async () => {
       const owValue = Number(selectedFlightOW.flight_fees[0].valueRT);
       const rtValue = Number(selectedFlightRT.flight_fees[0].valueRT);
-      const taxisvRate = Number(selectedFlightRT.itinerary.tax / 100);
+      const taxisvRate = Number(selectedFlightOW.itinerary.tax / 100);
 
       // console.log("selectedFlightOW:", selectedFlightOW);
       // console.log("taxisvRate:", taxisvRate);
@@ -146,7 +146,7 @@ export default function Home() {
                 <ItineraryListPage onNext={handleNext} onSelectedFlightsOW={setSelectedFlightOW} onSelectedFlightsRT={setSelectedFlightRT} searchData={searchData}/>
               )}
               {step === 2 && (
-                <PassengerListPage onNext={handleNext} selectedFlightOW={selectedFlightOW} selectedFlightRT={selectedFlightRT} searchData={searchData}/>
+                <PassengerListPage onNext={handleNext} rtValues={rtValues} selectedFlightOW={selectedFlightOW} selectedFlightRT={selectedFlightRT} searchData={searchData}/>
               )}
             </div>
             <div className="col-span-1">
