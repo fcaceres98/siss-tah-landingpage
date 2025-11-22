@@ -8,6 +8,20 @@ export interface InvoiceModule {
     reference_type: string;
     sequential?: string;
 
+    requestStatus?: string;
+    requestReason?: string;
+    requestMessage?: string;
+    requestDate?: string;
+    requestID?: string;
+    processUrl?: string;
+    
+    responseType?: string;
+    responseStatus?: string;
+    responseReason?: string;
+    responseMessage?: string;
+    responseDate?: string;
+    responsesignature?: string;
+
     invoice_id?: string;
     cai_id?: number;
     cai?: string;

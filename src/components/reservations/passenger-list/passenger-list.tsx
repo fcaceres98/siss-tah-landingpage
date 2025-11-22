@@ -788,22 +788,25 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 }
 
                 const result = await response.json();
+                const PTPSession = result.response;
+                console.log(JSON.stringify(PTPSession, null, '\t'));
                 
-                // toast("Reservación creada exitosamente", {
-                //     description: (
-                //         <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-                //             <code className="text-white">{JSON.stringify(result, null, '\t')}</code>
-                //         </pre>
-                //     ),
-                // });
+                toast("Reservación creada exitosamente", {
+                    description: (
+                        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+                            <code className="text-white">Redireccionando hacia Banco Atlantida.</code>
+                        </pre>
+                    ),
+                });
 
                 // Redirect to response page with result data
-                const queryParams = new URLSearchParams({
-                    invoice_id_temp: result.invoice_id || '',
-                    reservation_id_temp: result.reservation_id || '',
-                    response: result.response || '',
-                });
-                window.location.href = `/response?${queryParams.toString()}`;
+                // const queryParams = new URLSearchParams({
+                //     invoice_id_temp: result.invoice_id || '',
+                //     reservation_id_temp: result.reservation_id || '',
+                //     response: result.response || '',
+                // });
+                // window.location.href = `/response?${queryParams.toString()}`;
+                window.location.href = PTPSession.processUrl;
             } catch (error) {
                 console.error("Error submitting reservation:", error);
                 toast("Error al crear la reservación", {
