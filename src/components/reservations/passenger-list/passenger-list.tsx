@@ -712,6 +712,8 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "minors": searchData?.paxCount.paxMinor ?? 0,
                 "seniors": searchData?.paxCount.paxSenior ?? 0,
                 "infants": searchData?.paxCount.paxInfant ?? 0,
+                "contact_id_type": data.client_id_type,
+                "contact_id": data.client_id,
                 "contact_first_name": data.client_first_name,
                 "contact_last_name": data.client_last_name,
                 "contact_phone": data.client_telephone,
