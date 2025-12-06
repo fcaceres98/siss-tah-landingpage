@@ -42,7 +42,7 @@ const term1 = [
   }, {
     title: "Políticas de Equipaje",
     terms:[
-      "Se permite un (1) artículo personal de mano como ser bolso o mochila no mayor a 10 libras.",
+      "Se permite un (1) artículo personal de mano como ser bolso o mochila no mayor a 22 libras.",
       "TAH no se responsabiliza por daños causados en el equipaje por sobrepeso, cierres dañados o en mal estado, ruedas quebradas, abolladuras o golpes en la superficie de su maleta, ya que el equipaje está sujeto a daños durante el traslado de counter a la aeronave y el manejo aeroportuario pasando por áreas donde la aerolínea no tiene control (rayos x, movimientos bruscos a causa de turbulencia, entre otros).",
       "Los reclamos por equipaje deberán llevarse a cabo inmediatamente después del vuelo o antes de salir del aeropuerto.",
     ],

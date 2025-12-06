@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState, Suspense } from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 
 import {
@@ -49,7 +49,6 @@ export default function Content() {
     
     return (
         <>
-        <Suspense fallback={<div>Loading...</div>}>
             <Navbar03Page />
             <div className="flex flex-col max-w-screen items-center gap-2 p-4 bg-muted">
                 <Card className="flex flex-col w-full max-w-5xl mx-auto border p-4 bg-background">
@@ -86,7 +85,6 @@ export default function Content() {
                 </Card>
             </div>
             <Footer04Page />
-        </Suspense>
         </>
     );
 }
