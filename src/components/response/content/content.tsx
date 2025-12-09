@@ -17,6 +17,7 @@ import ResponsePage from "@/components/response/response/response";
 import InvoicePage from "@/components/response/invoice/invoice";
 
 import { InvoiceModule } from "@/components/types/Invoice";
+import { ResponseData } from "@/components/types/responseData";
 
 export default function Content() {
 
@@ -26,6 +27,8 @@ export default function Content() {
     
     const [invoiceTemp, setInvoiceTemp] = useState<InvoiceModule | null>(null);
     const [LoadingInvoice, setLoadingInvoice] = useState<boolean>(true);
+    const [responseData, setResponseData] = useState<ResponseData | null>(null);
+
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
     useEffect(() => {
@@ -35,8 +38,10 @@ export default function Content() {
                 
                 const resTemp = await fetch(apiUrl + '/tahonduras-online/reservations/onlinetemp/' + invoiceId_temp + '/' + reservationId_temp);
                 if (!resTemp.ok) throw new Error("Error fetching destinations");
-                const dataTemp: InvoiceModule = await resTemp.json();
-                setInvoiceTemp(dataTemp);
+                const dataTemp = await resTemp.json();
+                dataTemp.invoice.reservation = dataTemp.reservation;
+                setInvoiceTemp(dataTemp.invoice);
+                setResponseData(dataTemp.responseData);
             } catch (err) {
                 console.error(err);
             } finally {
@@ -67,6 +72,11 @@ export default function Content() {
                             <div className="flex-1">
                                 <p>Invoice ID Temp: {invoiceId_temp}</p>
                                 <p>Reservation ID Temp: {reservationId_temp}</p>
+
+                                <p>RESPONSE DATA</p>
+                                <p>
+                                    {JSON.stringify(responseData, null, '\t')}
+                                </p>
                                 
                                 <p>INVOICE TEMP</p>
                                 <p>
