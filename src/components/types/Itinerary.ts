@@ -1,3 +1,5 @@
+import { ItineraryDetail } from './ItineraryDetail';
+
 export interface Itinerary {
     id: number;
     flight_no: string;
@@ -10,4 +12,6 @@ export interface Itinerary {
     tax_description: string;
     tax: number;
     discount: number;
+
+    itinerary_connection: ItineraryDetail[];
 }

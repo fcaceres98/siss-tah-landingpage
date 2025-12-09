@@ -288,6 +288,9 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
 
         if (!selectedFlightOW || !selectedFlightRT || !searchData)  return;
 
+        const OWConnections = selectedFlightOW.itinerary.itinerary_connection;
+        const RTConnections = selectedFlightRT.itinerary.itinerary_connection;
+
         const arrAllPassengers = [];
         // OW reservation detail passengers
         for (const passenger of data.adultPassengers) {
@@ -336,6 +339,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of OWConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "IDA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightOW.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightOW.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightOW.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightOW.flight_fees[0].type,
+                    "detail_type": "ADULTO",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
         for (const passenger of data.minorPassengers) {
             const taxisvRate = Number(selectedFlightOW.itinerary.tax / 100);
@@ -383,6 +426,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of OWConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "IDA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightOW.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightOW.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightOW.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightOW.flight_fees[0].type,
+                    "detail_type": "MENOR",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
         for (const passenger of data.seniorPassengers) {
             const taxisvRate = Number(selectedFlightOW.itinerary.tax / 100);
@@ -430,6 +513,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of OWConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "IDA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightOW.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightOW.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightOW.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightOW.flight_fees[0].type,
+                    "detail_type": "MAYOR",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
         for (const passenger of data.infantPassengers) {
             const taxisvRate = Number(selectedFlightOW.itinerary.tax / 100);
@@ -477,6 +600,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of OWConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "IDA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightOW.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightOW.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightOW.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightOW.flight_fees[0].type,
+                    "detail_type": "INFANTE",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
 
         // RT reservation detail passengers
@@ -526,6 +689,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of RTConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "VUELTA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightRT.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightRT.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightRT.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightRT.flight_fees[0].type,
+                    "detail_type": "ADULTO",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
         for (const passenger of data.minorPassengers) {
             const taxisvRate = Number(selectedFlightRT.itinerary.tax / 100);
@@ -573,6 +776,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of RTConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "VUELTA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightRT.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightRT.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightRT.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightRT.flight_fees[0].type,
+                    "detail_type": "MENOR",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
         for (const passenger of data.seniorPassengers) {
             const taxisvRate = Number(selectedFlightRT.itinerary.tax / 100);
@@ -620,6 +863,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of RTConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "VUELTA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightRT.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightRT.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightRT.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightRT.flight_fees[0].type,
+                    "detail_type": "MAYOR",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
         for (const passenger of data.infantPassengers) {
             const taxisvRate = Number(selectedFlightRT.itinerary.tax / 100);
@@ -667,6 +950,46 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
                 "transit": "",
                 "reservation_status": "CONFIRMADO"
             });
+
+            for (const connection of RTConnections) {
+                arrAllPassengers.push({
+                    "ticket": "",
+                    "flight_id": connection.flight_id,
+                    "flight_type": "VUELTA",
+                    "connectionsettings_id": 1,
+                    "detail_document_type": passenger.documentType,
+                    "detail_document_number": passenger.documentNumber,
+                    "detail_document_expiration_date": formatDateServer(passenger.documentExpirationDate),
+                    "detail_document_issue_country":  passenger.documentIssueCountry,
+                    "detail_first_name": passenger.firstName,
+                    "detail_middle_name": passenger.middleName,
+                    "detail_last_name": passenger.lastName,
+                    "detail_gender": passenger.genderType,
+                    "detail_traveler_type": "INTRANSIT PAX",
+                    "detail_crew_funtion": "",
+                    "detail_date_birth": formatDateServer(passenger.dateBirth),
+                    "detail_country_birth": passenger.countryBirth,
+                    "detail_nationality": passenger.countryNationality,
+                    "detail_country_residence": passenger.countryResidence,
+                    "detail_special_service": "NO",
+                    "detail_special_service_observation": "",
+                    "detail_2nd_document_expiration_date": "2025-01-01",
+                    "flight_fees_id": selectedFlightRT.flight_fees[0].id,
+                    "flight_fees_fee": selectedFlightRT.flight_fees[0].fee,
+                    "flight_fees_description": selectedFlightRT.flight_fees[0].description,
+                    "flight_fees_value": 0,
+                    "flight_fees_subtotal": 0,
+                    "flight_fees_discount": 0,
+                    "flight_fees_taxISV": 0,
+                    "flight_fees_taxHN": 0,
+                    "flight_fees_taxCU": 0,
+                    "flight_fees_total": 0,
+                    "flight_fees_type": selectedFlightRT.flight_fees[0].type,
+                    "detail_type": "INFANTE",
+                    "transit": "TRANSITO",
+                    "reservation_status": "CONFIRMADO"
+                });
+            }
         }
 
         // Build the reservation payload here
@@ -772,7 +1095,7 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
             reservacionDetalle: [...arrAllPassengers]
         };
 
-        // console.log(JSON.stringify(payload, null, '\t'));
+        console.log(JSON.stringify(payload, null, '\t'));
 
         // Post payload to API
         async function submitReservation() {
