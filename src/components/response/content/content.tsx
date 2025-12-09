@@ -51,7 +51,7 @@ export default function Content() {
 
         fetchTempInvoice();
     }, [apiUrl, invoiceId_temp, reservationId_temp]);
-    
+
     return (
         <>
             <Navbar03Page />
@@ -70,25 +70,13 @@ export default function Content() {
                         ) : (
                         <div className="col-span-1">
                             <div className="flex-1">
-                                <p>Invoice ID Temp: {invoiceId_temp}</p>
-                                <p>Reservation ID Temp: {reservationId_temp}</p>
-
-                                <p>RESPONSE DATA</p>
-                                <p>
-                                    {JSON.stringify(responseData, null, '\t')}
-                                </p>
-                                
-                                <p>INVOICE TEMP</p>
-                                <p>
-                                    {JSON.stringify(invoiceTemp, null, '\t')}
-                                </p>
+                                <ResponsePage response={responseData} />
                             </div>
+                            { responseData?.status === "APPROVED" &&
                             <div className="flex-1">
-                                <ResponsePage invoice={Number(invoiceId_temp)} reservation={Number(reservationId_temp)} />
+                                <InvoicePage invoice={invoiceTemp} />
                             </div>
-                            <div className="flex-1">
-                                <InvoicePage invoice={Number(invoiceId_temp)} reservation={Number(reservationId_temp)} />
-                            </div>
+                            }
                         </div>
                         )}
                     </CardContent>

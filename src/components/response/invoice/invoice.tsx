@@ -1,13 +1,15 @@
+import { InvoiceModule } from "@/components/types/Invoice";
+
 interface InvoicePageProps {
-    invoice: number;
-    reservation: number;
+    invoice: InvoiceModule | null;
 }
-const InvoicePage: React.FC<InvoicePageProps> = ({ invoice, reservation }) => {
+const InvoicePage: React.FC<InvoicePageProps> = ({ invoice }) => {
     return (
         <div>
-            <p>Invoice Page</p>
-            <p>Invoice Temp: {invoice}</p>
-            <p>Reservation Temp: {reservation}</p>
+            <p>Invoice</p>
+            <p>
+                {JSON.stringify(invoice, null, '\t')}
+            </p>
         </div>
     );
 };
