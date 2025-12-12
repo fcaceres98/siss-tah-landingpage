@@ -995,7 +995,7 @@ const PassengerListPage: React.FC<PassengerListPageProps> = ({ searchData, onNex
         // Build the reservation payload here
         const payload = {
             factura: {
-                "reference_type": "Reservación",
+                "reference_type": "Reservación Online",
                 "client_id": 1,
                 "client_rtn": "9999999999999",
                 "client_name": "CONSUMIDOR FINAL",

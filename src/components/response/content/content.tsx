@@ -17,6 +17,7 @@ import ResponsePage from "@/components/response/response/response";
 import InvoicePage from "@/components/response/invoice/invoice";
 
 import { InvoiceModule } from "@/components/types/Invoice";
+import { Reservations } from "@/components/types/Reservations";
 import { ResponseData } from "@/components/types/responseData";
 
 export default function Content() {
@@ -25,7 +26,8 @@ export default function Content() {
     const invoiceId_temp = searchParams.get("invoice_id_temp");
     const reservationId_temp = searchParams.get("reservation_id_temp");
     
-    const [invoiceTemp, setInvoiceTemp] = useState<InvoiceModule | null>(null);
+    const [invoice, setInvoice] = useState<InvoiceModule | null>(null);
+    const [reservation, setReservation] = useState<Reservations | null>(null);
     const [LoadingInvoice, setLoadingInvoice] = useState<boolean>(true);
     const [responseData, setResponseData] = useState<ResponseData | null>(null);
 
@@ -39,8 +41,9 @@ export default function Content() {
                 const resTemp = await fetch(apiUrl + '/tahonduras-online/reservations/onlinetemp/' + invoiceId_temp + '/' + reservationId_temp);
                 if (!resTemp.ok) throw new Error("Error fetching destinations");
                 const dataTemp = await resTemp.json();
-                dataTemp.invoice.reservation = dataTemp.reservation;
-                setInvoiceTemp(dataTemp.invoice);
+                
+                setInvoice(dataTemp.invoice);
+                setReservation(dataTemp.reservation);
                 setResponseData(dataTemp.responseData);
             } catch (err) {
                 console.error(err);
@@ -74,7 +77,7 @@ export default function Content() {
                             </div>
                             { responseData?.status === "APPROVED" &&
                             <div className="flex-1">
-                                <InvoicePage invoice={invoiceTemp} />
+                                <InvoicePage invoice={invoice} reservation={reservation} />
                             </div>
                             }
                         </div>
