@@ -61,7 +61,7 @@ export default function Content() {
             <div className="flex flex-col max-w-screen items-center gap-2 p-4 bg-muted">
                 <Card className="flex flex-col w-full max-w-5xl mx-auto border p-4 bg-background">
                     <CardHeader className="border-b">
-                        <CardTitle>Factura</CardTitle>
+                        <CardTitle>Detalle de la Reservacion</CardTitle>
                     </CardHeader>
                     <CardContent className="grid grid-cols-1 gap-4">
                         {LoadingInvoice ? (
